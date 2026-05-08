@@ -569,6 +569,8 @@
 - This is DP
 - At every character you have a choice of skipping it and adding 1 to the extra characters.
 	- However, if this character is the start of a word in the dictionary, we minimize the number of extra characters in this string with running dfs on everything starting from the last character in the string.
+	- go through all dictionary words, get a string_view of the current string with the bounds of the current position and the word length.
+	- check for equality.
 - Repeated work: so we can memo it.
 - Can obviously do bottom up if necessary. 
 - can use a trie, but i think that's overneeded here because this is a $O(N^2*d)$ solution.
