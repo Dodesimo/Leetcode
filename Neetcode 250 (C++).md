@@ -564,3 +564,12 @@
 - else if the node doesn’t have the current character return false.
 - else we move the pointer to the next node.
 - at the end of the for loop, we return if this is a word end or not.
+
+# Extra Characters in a String
+- This is DP
+- At every character you have a choice of skipping it and adding 1 to the extra characters.
+	- However, if this character is the start of a word in the dictionary, we minimize the number of extra characters in this string with running dfs on everything starting from the last character in the string.
+- Repeated work: so we can memo it.
+- Can obviously do bottom up if necessary. 
+- can use a trie, but i think that's overneeded here because this is a $O(N^2*d)$ solution.
+	- But if trie is required, build a trie out of all dictionary words, what we do is iterate in the substring and for each character, go through the trie and see if its a word end and then do the min.
