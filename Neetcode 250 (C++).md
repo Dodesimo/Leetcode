@@ -588,4 +588,17 @@
 	- If the mapping does have the current mapping of a word, and the word is an end, then add the word to the output, and then get rid of the endword flag.
 		- This prevents duplicates from occurring when we iterate from another word.
 	- Then backtrack: set this visited to true, then go through all four directions, and then set back to false.
--
+
+# Sum of All Subset XOR Totals
+- Straightforward backtracking.
+- At each decision, keep track of the path XoR
+- if the pointer exceeds the size of nums, return.
+- Picking item means xoring the current item with the path xor.
+	- then add that to the total.
+- dfs to the next index with this change in the path xor.
+- unpick is just going to the next index with the existing path xor.
+- XOR properties: a ^ a = 0 (XOR'ing with itself is 0), a ^ 0 = a.
+	- There is a more complicated bit manipulation version, look into that when there's an interview.
+		- Essentially, when XORing, an active bit in a number will be present in half of the subsets. (2^n / 2 subsets)
+		- So we need to find all active bits, and then we can multiply that.
+# 
