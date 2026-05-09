@@ -609,3 +609,16 @@
 	* `push_back`: creates a copy, `emplace_back` avoids the creation of a temporary r-value object.
 * Push item back and then go to the next element in nums, and then pop, and then go to the next element.
 
+# Combination Sum
+* Again, pick/unpick pattern.
+* DFS takes pointer, reference to nums vector, path vector, output vector, and the target sum.
+* If this sum is a 0, then we add the path vector to the output vector.
+* If the i vector exceeds nums size or equals it or if the target sum is less than 0, prune (return).
+* if we pick, we can stay at the same place and reuse, but our target sum just decreases by the nums.
+* but if we skip, we forever move forward.
+* this is why we have unique combinations: we never allow for going backwards (only go forward).
+* In terms of time complexity, its $(O(T/min(N) * 2^n))$, copying with the largest possible size times there's two choices.
+	* However, a more honest bound is $2^(N+ T/m)$
+		* $T/m$ = number of times you can take at max
+		* N = numer of times you can skip. 
+* Can optimize with early stopping, sort and we know that if our candidate is higher than the target, then we return.
