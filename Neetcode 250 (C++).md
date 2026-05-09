@@ -601,4 +601,11 @@
 	- There is a more complicated bit manipulation version, look into that when there's an interview.
 		- Essentially, when XORing, an active bit in a number will be present in half of the subsets. (2^n / 2 subsets)
 		- So we need to find all active bits, and then we can multiply that.
-# 
+# Subsets
+* Pick/unpick pattern.
+* DFS takes a pointer, references to the nums vector, path vector, and a nested output vector.
+* If the pointer exceeds size of the nums, then we push it back to the path.
+	* the reason why this is good even through there's a copy involved is because we need a snapshot of the path so far (since this path is shared throughout the call stack because its a reference).
+	* `push_back`: creates a copy, `emplace_back` avoids the creation of a temporary r-value object.
+* Push item back and then go to the next element in nums, and then pop, and then go to the next element.
+
