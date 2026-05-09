@@ -575,3 +575,17 @@
 - Can obviously do bottom up if necessary. 
 - can use a trie, but i think that's overneeded here because this is a $O(N^2*d)$ solution.
 	- But if trie is required, build a trie out of all dictionary words, what we do is iterate in the substring and for each character, go through the trie and see if its a word end and then do the min.
+
+# Word Search II
+- We do depth first search alongside trie nodes.
+- Create a trie node, and then a Trie data structure with a root initialized.
+	- Trie node stores the word itself as well.
+- Create a visited set that's a nested list of ```std::vector<std::vector<bool>>```
+	- Done with ```std::vector<std::vector<bool>> visiting set(matrix.size(), std::vector<bool>(matrix[0].size(), false))```
+- Add all dictionary items to the trie.
+- Then, iterate through the array, and then if the trie's first layer contains any of the characters in the word, then do a dfs starting from the row, column, the root, and pass in board, visited, output.
+	- In the DFS, check for out of bounds, see if visited, and also if the trie node doesn't have the current mapping of board cell.
+	- If the mapping does have the current mapping of a word, and the word is an end, then add the word to the output, and then get rid of the endword flag.
+		- This prevents duplicates from occurring when we iterate from another word.
+	- Then backtrack: set this visited to true, then go through all four directions, and then set back to false.
+-
