@@ -622,3 +622,10 @@
 		* $T/m$ = number of times you can take at max
 		* N = numer of times you can skip. 
 * Can optimize with early stopping, sort and we know that if our candidate is higher than the target, then we return.
+
+# Combination Sum II
+- Pick/unpick
+- To avoid duplicate cases: sort the input, and when unpicking, don't pick any of the same elements as this. 
+	- Go to the next unique element.
+- In both cases we do `i + 1` because we want to get to the next unique element.
+- Don't try to skip duplicates at the top level because this would force all unique elements in each of the containers.
