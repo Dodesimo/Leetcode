@@ -629,3 +629,10 @@
 	- Go to the next unique element.
 - In both cases we do `i + 1` because we want to get to the next unique element.
 - Don't try to skip duplicates at the top level because this would force all unique elements in each of the containers.
+
+# Combinations
+* Need to avoid duplicates.
+* We maintain i (current number), the output vector, the path vector, n (max number), and k (max elements in our list).
+* If the size of path vector (remember to `static_cast` to int) is equal to k, we can push it back to output.
+* If i is greater than max number we can be, or if the size of our path is greater than the max (k), return.
+* We push this element to path, and then we go to the next element, else we pop and do the same.
