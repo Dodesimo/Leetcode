@@ -645,7 +645,6 @@
 
 # Subsets II
 - Idea: pick/unpick
-- To avoid duplicates, when we skip items in a particular layer, we move past all elements and recurse on the next unique element.
+- To avoid duplicates, when we skip items in a particular layer, we move past all elements and recurse on the next unique element after sorting.
 	- So keep moving while `nums[i] == nums[i - 1]`.
 	- Then the next index for i is an unique element, backtrack starting there.
-- 
