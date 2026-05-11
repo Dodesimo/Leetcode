@@ -642,3 +642,10 @@
 	- We do greater than equal to consider the state where we don't swap the first element.
 - To backtrack and consider another swap, we revert the swap we just did.
 	- Just do the swap operation again.
+
+# Subsets II
+- Idea: pick/unpick
+- To avoid duplicates, when we skip items in a particular layer, we move past all elements and recurse on the next unique element.
+	- So keep moving while `nums[i] == nums[i - 1]`.
+	- Then the next index for i is an unique element, backtrack starting there.
+- 
