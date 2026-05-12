@@ -648,3 +648,22 @@
 - To avoid duplicates, when we skip items in a particular layer, we move past all elements and recurse on the next unique element after sorting.
 	- So keep moving while `nums[i] == nums[i - 1]`.
 	- Then the next index for i is an unique element, backtrack starting there.
+
+# Permutations II:
+	Look more into logic of this tomorrow
+
+# Generate Parenthesis:
+- Keep track of open, closed, and n pairs.
+- If open == close == n, we are done, so we push the path to the output.
+- if our closed ever exceeds open, return (illegal).
+- if our open is more than closed:
+	- we can add either an open bracket or close it.
+	- have closed logic, push "(" into the path.
+	- Then recurse that way.
+	- Pop
+- If closed equal to open:
+	- forced into a open bracket.
+	- push ")" into the path.
+	- recurse that way
+	- pop.
+- 
