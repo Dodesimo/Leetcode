@@ -675,3 +675,12 @@
 - then recurse in all directions and or it to see if from this square we can get the word.
 - if we permanently mark a node as visitied, we can't form words that may include that letter from other paths.
 	- so we mark it as not visited after we have finished procesing all other paths starting from that square.
+
+# Palindromic Partitioning:
+- For each index, consider all substrings and see if they are palindromes through auxillary function.
+	- if it is, place it in a vector of our current path of strings.
+	- then recurse to j + 1 (because we processed i to j inclusive), which is why the `std::string_view` constructor goes from `s.begin()` to `s.begin() + j + 1`. 
+	- to explore other possible palindromes and reset our state, we pop this from the current path.
+- Remember to use a std::string_view for partition because its quicker.
+	- `emplace_back` if the string view is a palindrome.
+- 
