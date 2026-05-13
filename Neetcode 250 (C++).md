@@ -666,4 +666,12 @@
 	- push ")" into the path.
 	- recurse that way
 	- pop.
-- 
+
+# Word Search:
+- Do DFS on the grid with the word in mind.
+- If our word pointer is at the size, word has been successfully matched, return true.
+- if our r, c indices are out of bounds, the current square doesn't match the word index in the word, or the current location is visited, return false.
+- set the visited to be true for this path
+- then recurse in all directions and or it to see if from this square we can get the word.
+- if we permanently mark a node as visitied, we can't form words that may include that letter from other paths.
+	- so we mark it as not visited after we have finished procesing all other paths starting from that square.
