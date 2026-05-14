@@ -683,4 +683,28 @@
 	- to explore other possible palindromes and reset our state, we pop this from the current path.
 - Remember to use a std::string_view for partition because its quicker.
 	- `emplace_back` if the string view is a palindrome.
-- 
+- Optimization:
+	- Precompute all partitions that are palindromes (DP table of two dimensions containing information about whether its a palindrome for two indices).
+	- then given two indices, can just do a `O(1)` lookup.
+
+# Letter Combinations of a Phone Number
+- For every single number, you have three choices.
+- So create an `unordered_map` that maps every number as a character to the string of letters that correspond to that character.
+- Then in the dfs, standard procedure for adding (if i pointer equals the size of digits, append the string made to the output vector).
+- for every single number, iterate over characters in the corresponding string mapped in the dictionary.
+	- and then recurse to the next index.
+- after we reach back to this point, undo our work/restore state by popping the letter that we picked.
+	- then go to the next character.
+
+
+# Matchsticks to Square:
+* Question devolves to having four partitions of an array that have equal sums.
+* So have a vector of four groupSums and add each to the target.
+* then recurse to the next position (since requried every single matchstick used).
+* THis TLES, so optimizations:
+	* We know each group should be equal to the sum divided by 4 for a successful square since every stick is used.
+	* So when checking if true, check if all groups are equal to this target.
+	* And when adding to a group, check if if doing so exceeds this sideTarget (if so, we skip this).
+* also sort max to least so that we fail fast.
+	* do so w/ `std::sort(matchsticks.rbegin(), matchsticks.rend()`).
+* 
