@@ -707,4 +707,18 @@
 	* And when adding to a group, check if if doing so exceeds this sideTarget (if so, we skip this).
 * also sort max to least so that we fail fast.
 	* do so w/ `std::sort(matchsticks.rbegin(), matchsticks.rend()`).
-* 
+
+# Partition to K Equal Sum Subsets
+- Similar approach to matchsticks to squares.
+- Except, instead of a fixed size of 4 groups, its k.
+- Calculate target sum of each group, and sort largest to smallest like usual.
+- When calculating if something is a hit, check equality with the target.
+- then iterate over all the sums.
+	- if adding the current number would exceed the sum, continue.
+	- since these bins are all interchangable and each number can only be in one bin, we have duplicate state spaces when we add to duplicate bins.
+		- If we see the current group sum is equal to the previous one, we move to the next one.
+	- We then add the number to the group, then recurse to the next index.
+	- Then we revert state.
+	- If the bucket is 0, that means everything to the right is 0 since we add to the left most bucket.
+		- So if the bucket was initially 0, adding this element to everything to the right yields a duplicate, so we break from the loop.
+- 
