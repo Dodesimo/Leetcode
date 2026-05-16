@@ -721,4 +721,14 @@
 	- Then we revert state.
 	- If the bucket is 0, that means everything to the right is 0 since we add to the left most bucket.
 		- So if the bucket was initially 0, adding this element to everything to the right yields a duplicate, so we break from the loop.
-- 
+
+# N Queens
+- Classic backtracking.
+- Keep track of board state as a `std::vector<std::vector<char>>`.
+- Keep track of rows, cols, positive diagonals, negative diagonals w/ `std::unordered_set<int>()`.
+- if we used up all queens (indicated by i), then we create a string off of the `std::vector<char>` constructor and add it to the result.
+- Then iterate through all columns till n.
+	- If the row and column are in the respective hashsets, continue to the next.
+- Else, add appropriate values to correct hashmap.
+- set correct row and column to `Q`, recurse to the next row.
+- Revert all word
