@@ -732,3 +732,11 @@
 - Else, add appropriate values to correct hashmap.
 - set correct row and column to `Q`, recurse to the next row.
 - Revert all word
+
+# N Queens II
+- Same thing as N Queens but no need to store state.
+- have hashsets.
+- if i == n, return 1.
+- then for each state, maintain a total count variable.
+	- add to that if we are in a valid position.
+- at the end, return this.
