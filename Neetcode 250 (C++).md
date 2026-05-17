@@ -751,4 +751,11 @@
 	- create a `std::ostringstream` and then add strings to this output and add spaces when it doesn't equal the last element.
 	- Then, construct a string from this, and push it back to the result.
 	- Then return.
-- 
+
+# Kth Largest Element in a Stream
+- To create a min heap: `std::priority_queue<int, std::vector<int>, std::greater<int>>`.
+	- Max heap: `std::priority_queue<int>`
+- U can initialize this through constructor list, and while the size of the min heater than k, pop.
+	- So we only have large elements.
+- Then, when we add, u push to the heap, if its greater than k, we pop.
+- Then we return the top.
