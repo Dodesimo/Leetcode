@@ -740,3 +740,15 @@
 - then for each state, maintain a total count variable.
 	- add to that if we are in a valid position.
 - at the end, return this.
+
+# Word Break II
+- Keep track of all strings that map to the full string in a `std::vector`.
+- Iterate through the word, see if the substring matches the main string.
+	- If so push this string back onto the vector.
+	- Then dfs to the next index (i + w.size()) that wasn't processed.
+	- Then pop back.
+- When adding a word to the result.
+	- create a `std::ostringstream` and then add strings to this output and add spaces when it doesn't equal the last element.
+	- Then, construct a string from this, and push it back to the result.
+	- Then return.
+- 
