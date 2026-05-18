@@ -766,3 +766,12 @@
 	- pop largest and second largest, then if the largest is greater than the second largest, then we push to the max heap the difference.
 - at the end, if our weights heap is empty, we return a 0.
 - else we return the top of the heap.
+
+# K Closest Points to Origin
+- Don't use build heap here because this means that heap operations will be of max size N not k.
+- Essentially create a priority queue of pairs of distances (not square rooted because squaring is more efficient and we care about relative ordering), push to this priority queue.
+	- If the size of the priority queue ever exceeds k then we pop.
+- Then we construct an output by repeatedly popping from the priority queue and `emplace_back` the indexed point from the vector.
+	- We need to first access w/ `top` and then we `pop`.
+	- `top` returns a const reference so we can use it directly in expressions.
+- There's a quick select solution, but i think its overkill (quick select makes sense for like kth largest).
