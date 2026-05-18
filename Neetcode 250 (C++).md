@@ -759,3 +759,10 @@
 	- So we only have large elements.
 - Then, when we add, u push to the heap, if its greater than k, we pop.
 - Then we return the top.
+
+# Last Stone Weight
+- Create a max heap of the stones.
+- Then while we still have weights in the max heap:
+	- pop largest and second largest, then if the largest is greater than the second largest, then we push to the max heap the difference.
+- at the end, if our weights heap is empty, we return a 0.
+- else we return the top of the heap.
