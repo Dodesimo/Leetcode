@@ -775,3 +775,28 @@
 	- We need to first access w/ `top` and then we `pop`.
 	- `top` returns a const reference so we can use it directly in expressions.
 - There's a quick select solution, but i think its overkill (quick select makes sense for like kth largest).
+
+# Kth Largest Element
+- Easy approach: use a min heap and pop when we exceed k
+	- This leaves us with the k largest elements.
+	- The top of this heap will be the element of choice.
+- Harder approach is quick select:
+	- Use `std::random_choice` to initialize random device
+	- use this to initialize a `std::mt19937 gen{rd()}`
+	- then within quick select, take a l and r (not inclusive) bound.
+		- then init. uniform int distribution (l, r - 1).
+		- get the pivot index
+		- then get the value
+		- from there, swap this with the last most element.
+		- then iniitalize a i pointer and left placement pointer w/ l.
+		- iterate from i to r, if the `nums[i]` is less than the pivot value, swap with the left value (place it there), and increment left pointer.
+		- increment i.
+		- from there, left represents the first number greater than the pivot so we should place it there.
+		- kth largest is located at the index n - k.
+			- if this is equal to index of left, return that number.
+		- if the left is greater than that, we found a number furhter to the right, so we recurse left (l, left).
+		- else, we recurse left + 1, r
+			- we do + 1 because we already know the left element isn't the kth largest.
+		- USE LEFT NOT PIVOT.
+			- PIVOT index doesn't represent the location of the pivot after its been partitioned.
+			- 
