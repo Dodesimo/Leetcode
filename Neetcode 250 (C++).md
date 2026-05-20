@@ -799,4 +799,25 @@
 			- we do + 1 because we already know the left element isn't the kth largest.
 		- USE LEFT NOT PIVOT.
 			- PIVOT index doesn't represent the location of the pivot after its been partitioned.
-			- 
+
+# Task Scheduler
+- Super unintuitive for me.
+- Idea: track of frequencies first.
+- Then have two priority queues:
+	- job queue: max heap storing # of tasks and the task character `std::priority_queue<int, char>`
+		- To minimize time taken, since we have a `n` gap, most frequent items will require the most gaps (using them early allows less frequent tasks to fill gaps).
+	- waiting queue: min heap that stores time till we can go back along side remaining frequency and the character task:
+		- `std::priority_queue<std::pair<int, std::pair<int, char>>, std::vector<std:pair<int, std::pair<int, char>>, std::greater<std::pair<int, std::pair<in, char>>>>`
+	- strict invariant:
+		- job queue always has valid jobs running on it.
+		- waiting queue has jobs that are waiting.
+	- while waiting queue is not empty or the job queue is not empty (so loop stops when both are):
+		- if the waiting queue has things and the time something can come back is equal to the global time (set to 0):
+			- get that item and put it on the job queue.
+		- if job queue has things in it:
+			- get the top (don't have to do any checks because we know that its not in the waiting queue).
+			- decrement the instances
+			- and then add to the waiting queue with a time that is t + n + 1 and then new copies and the job
+				- reason is because n represents intervals.
+				- at least n intervals, we can run on the n + 1'th interval.
+				- 
