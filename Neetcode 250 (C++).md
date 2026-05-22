@@ -820,4 +820,24 @@
 			- and then add to the waiting queue with a time that is t + n + 1 and then new copies and the job
 				- reason is because n represents intervals.
 				- at least n intervals, we can run on the n + 1'th interval.
-				- 
+
+# Design Twitter
+- Keep track of people user is following: `std::unordered_map<int, std::unordered_set<int>>`
+	- maps user id to a vector of following IDs
+- Keep track of users tweets:
+	- `std::unordered_map<int, std::vector<std::pair<int, int>>`
+-  keep track of time
+- every post: push back the time and the tweet id for the right user, then increment the time
+	- this produces a sorted list of tweets for each user.
+- getNewsFeed: 
+	- since greater time means more recent and smaller time means less recent, use a max heap to store tweets.
+	- since the user needs to be in the following, insert userId into following set for user.
+	- then go through all following, and then if the following person has tweets (greater than 0), get the most recent tweet for that person at `tweets[f][tweets[f].size() - 1]`
+	- then push to the max heap a vector of the time, tweetId, nextIndex (which is the `tweets[f].size() - 2` (cast to int), and the userId of the follower F).
+	- then create a results vector, and while its size is less than 10 and the maxHeap size is not empty get the top item in the heap.
+	- push this back onto the results vector, and if the nextIndex is valid (so greater than equal to 0), get the next tweet through this index, and then push to the max heap the details of this tweet, the next index, and the userId of the tweet.
+	- then erase userId from following
+	- return the results vector
+- follow: just add it to the set
+- unfollow: if the follower is in the keys of the followerId and the foloweeId is in the hash set that the followerId hash, then erase.
+- 
