@@ -856,3 +856,14 @@
 - then we fast forward time to the processing time + t.
 - however, if there's not anything in the ready jobs, can fast forward time to the least time in the first priority
 - don't try to manually increment time, fast forward to the next time.
+
+# Reorganize String
+- Create a frequency map that maps ASCII offsets to frequency.
+- Create a frequency max heap (`std::priority_queue<int, int> frequencyMaxHeap {}`)
+- Then for each frequency, emplace it in the priority queue.
+- Then maintain a pair in the previous that maintains the frequency and ascii offset (this can be set to -1, -1)
+		- Could also make it 0 in order to simplify the logic where the previous is set to the correct value after the frequency of the character is dropped
+- If the maxHeap is empty and we have the default, return an empty string
+- Then get the top character on the frequency, pop it, get the actual character by adding `a`, then decrement the frequency.
+	- If the previous is empty, place the previous in the frequencyMaxHeap again
+- then if we still have characters, set it to previous, else set it to default.
