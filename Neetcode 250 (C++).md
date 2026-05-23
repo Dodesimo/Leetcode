@@ -840,4 +840,19 @@
 	- return the results vector
 - follow: just add it to the set
 - unfollow: if the follower is in the keys of the followerId and the foloweeId is in the hash set that the followerId hash, then erase.
-- 
+
+# Single-Threaded CPU
+- We need two priority queues.
+- One priority queues has all the tasks in terms of their arrival times, processing times, and the index.
+	- create a vector with this information, and then use priority queue iterator constructor to heapify this
+		- `std::priority_queue<std::vector<int>, std::vector<std::vector<int>>, std::greater<std::vector<int>>> queue (tasksWithIndex.begin(), tasksWithIndex.end()`
+- then have a long variable for time
+- and create separate priority queue: `std::priority_queue<std::vector<int>, std::vector<std::vector<int>>, std::greater<std::vector<int>>> readyJobs`
+- while we have jobs in either, while the size of our queue is greater than and the top of the queue is less than the current time, we push the processing time and index into the priority queue, and then we pop it.
+		- remember `top()` doesn't remove the item from the queue
+			- so you have to pop
+- If there's a ready job available, get the top, and then pop it, and from the top, put the index in the result vector
+	- we handle the question's requirements through `std::priority_queue`'s lexicographic heap ordering
+- then we fast forward time to the processing time + t.
+- however, if there's not anything in the ready jobs, can fast forward time to the least time in the first priority
+- don't try to manually increment time, fast forward to the next time.
