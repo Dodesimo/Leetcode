@@ -867,3 +867,17 @@
 - Then get the top character on the frequency, pop it, get the actual character by adding `a`, then decrement the frequency.
 	- If the previous is empty, place the previous in the frequencyMaxHeap again
 - then if we still have characters, set it to previous, else set it to default.
+
+# Longest Happy String
+- Create a max heap of the character frequencies in a `std::pair` (remember first item in pair is int, second is char, counter + character)
+- while the max heap is populated, get the top, pop it
+	- if this has greater than 1 frequency, if we had a previous and the previous has more, we are careful and only use one character
+		- decrement counter
+	- else we use two (because we can't form three)
+		- decrement counter
+	- if the frequency is only one, decrease and add the character to a `std::ostringstream`
+- have the previous be initialized to 0, and if the previous isn't 0, go ahead and add it to the available stream again
+	- then, set previous to the `std::pair` that we popped
+- then at the end return output from a string
+- tips:
+	- don't set pair to -1 and then do previous checks it makes it complicated. just set the count default to 0, check if previous not 0 then add and then update previous
