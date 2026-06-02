@@ -901,3 +901,24 @@
 		- idea for every time interval go through and add or subtract the number of passengers to simulate the net
 			- make a vector the size of the total amount of intervals
 		- then go through each time step (index of the interval array), and add up totals (if it exceeds capacity, return false, else return true)
+
+# Find Median From Data Stream
+- idea: left heap gives you the max of the left side of the data, right heap gives you the min of the right side of the data
+- when we add values, the logic is:
+	- if this value is less than the left side's max, we know it should be there so insert
+		- otherwise, add to the right side
+	- if the difference between the two heaps exceeds one, then move from larger heap to smaller heap
+	- then when calculating the median, if both heaps have the same size, average of the two
+	- else whatever heap w/ more items has the median (beacuse odd number means one median, should be either to the left of the larger numbers if less or to the right if the smaller numbers are less)
+
+# IPO
+- this is a scheduling problem (realized too late)
+- projects get available when w becomes >= than the capital of the project
+- all scheduling problems have a waiting queue and an actual queue
+	- here, create priority queue of just project profits (max)
+	- create another priority queue of schedule times + profits (min heap based on first item)
+- while both heaps have items, move over the profits of projects to the max heap when we have capital >= their required capital
+- if we don't have any possible projects in our profit, we break
+- then we pop the greatest profit (since this is a possible item) and then we add it to our capital increment our counter, if its == to the limit, then we break
+- at the end we return our capital
+	- this capital is init. to w
