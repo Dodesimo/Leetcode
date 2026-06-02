@@ -881,3 +881,23 @@
 - then at the end return output from a string
 - tips:
 	- don't set pair to -1 and then do previous checks it makes it complicated. just set the count default to 0, check if previous not 0 then add and then update previous
+- better solution: 
+	- always add the highest frequency character to the string
+	- if doing so would mean the last three characters are equal, use the second highest
+	-  else add highest frequency, don't add if frequency becomes 0
+
+# Car Pooling:
+- Interval question w/ two approaches:
+	- heap:
+		- sort the trips array in terms of starting time
+		- then we maintain a priority queue of pair containing the last index and the # of passengers at that point
+		- maintain total variable
+		- add the first trip passengers to total
+		- also add this to the heap
+		- go through the rest of the trips, and while the priority queue has items and the end time (heap top) is less than or equal the current trip's start time, decrement their passenger count from the total and pop
+		- then add to total, check if exceeds capacity, if so return false
+		- then add to the heap the end time and the passengers
+	- line sweep:
+		- idea for every time interval go through and add or subtract the number of passengers to simulate the net
+			- make a vector the size of the total amount of intervals
+		- then go through each time step (index of the interval array), and add up totals (if it exceeds capacity, return false, else return true)
