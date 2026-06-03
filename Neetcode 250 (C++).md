@@ -939,3 +939,12 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - after comparing these two words:
 	- if prefixes equal and smaller word is the second one: incorrect ordering, smaller prefix should go first
 - return True at the very end
+
+# Find the Town Judge
+- initial approach: keep an adjacency list of trusted, add everyone to this list first and then process trusts
+	- then iterate and find someone that's not in the keys but in the values
+- maintain a difference array of size n + 1:
+	- town judge has an indegree of n - 1 and an outdegree of 0
+	- for a, b where a trusts b, we mean indegree - outdegree (that needs to be n - 1)
+		- so a's value gets decremented, b gets incremented
+		- then we see from range 1 to n + 1 there's a value that's n - 1
