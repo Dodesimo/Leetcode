@@ -922,3 +922,20 @@
 - then we pop the greatest profit (since this is a possible item) and then we add it to our capital increment our counter, if its == to the limit, then we break
 - at the end we return our capital
 	- this capital is init. to w
+
+
+Rest questions I will do in Python because I have enough experience w/ C++ coding now
+
+# Island Perimeter:
+- a land's sides is determined by number of 0s or if boundary
+
+# Verifying Alien Dictionary
+- map each character to dictionary
+- iterate through the first and second words in a zip, set an index counter
+- then set a not match flag  indicating whether between the two words there's a match
+- iterate through two words, if both characters equal, move on
+	- if characters differ: if first character is less than second character, good, set notMatch flag and break
+	- if first character > second character: return False (violates the ordering)
+- after comparing these two words:
+	- if prefixes equal and smaller word is the second one: incorrect ordering, smaller prefix should go first
+- return True at the very end
