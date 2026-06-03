@@ -948,3 +948,6 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- for a, b where a trusts b, we mean indegree - outdegree (that needs to be n - 1)
 		- so a's value gets decremented, b gets incremented
 		- then we see from range 1 to n + 1 there's a value that's n - 1
+
+# Number of Islands
+- this has been done a million times
