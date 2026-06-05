@@ -957,4 +957,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - else, add to visited set, set a total to 1, and then increment that by `dfs(r + 1, c), dfs(r - 1, c), dfs(r, c - 1), dfs(r + 1, c)`
 	- return total
 - keep track of max across all dfs starting at a valid one state and then return the value
--
+
+# Clone Graph 
+- Map the old nodes to the new nodes
+- do a dfs on the old node
+	- if the old node is in the hashmap, return the old node's mapping
+	- else:
+		- create the new node
+		- set the mapping in the hashmap
+		- then set the new node's value
+		- then set the neighbors through a DFS appending to neighbors list
+		- return the new node
