@@ -970,11 +970,21 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- return the new node
 
 # Walls and Gates:
+- idea: we do a BFS from the gates to the walls in order to determine closest walls 
 - when enqueueing nodes into the queue, add to visited
 	- this prevents duplicate nodes in the list which can pose efficiency/correctness concerns
-- think one ahead
+- think one ahead (don't need to, can just change value to layer within the main loop)
 	- add function should add to visited set, enqueue, and also set value
 	- queue used to set all nodes nearby one
 - to iterate over a layer, calculate the length of the entire queue and then for loop over that
 
-
+# Rotting Oranges
+- idea: 
+	- keep track of fresh oranges and rotten oranges, rotten oranges get put in queue
+	- adding: check for bounds, then add to visited set, then set it to a 2 and then add it to the queue
+- main loop:
+	- while we have stuff in queue AND we have fresh > 0, get the length of the queue, iterate over it, and do add function
+	- increment time (which serves as our layer)
+- if we break out of this main loop we know either our queue is empty or our fresh is 0
+	- if our fresh is 0, we found a possible time
+	- else -1
