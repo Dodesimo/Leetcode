@@ -951,3 +951,10 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 
 # Number of Islands
 - this has been done a million times
+
+# Max Area of Island
+- just number of islands, but instead of returning void, if the thing is out of bounds or is an actual 0, return 0
+- else, add to visited set, set a total to 1, and then increment that by `dfs(r + 1, c), dfs(r - 1, c), dfs(r, c - 1), dfs(r + 1, c)`
+	- return total
+- keep track of max across all dfs starting at a valid one state and then return the value
+-
