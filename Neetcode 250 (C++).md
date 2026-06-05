@@ -968,3 +968,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- then set the new node's value
 		- then set the neighbors through a DFS appending to neighbors list
 		- return the new node
+
+# Walls and Gates:
+- when enqueueing nodes into the queue, add to visited
+	- this prevents duplicate nodes in the list which can pose efficiency/correctness concerns
+- think one ahead
+	- add function should add to visited set, enqueue, and also set value
+	- queue used to set all nodes nearby one
+- to iterate over a layer, calculate the length of the entire queue and then for loop over that
+
+
