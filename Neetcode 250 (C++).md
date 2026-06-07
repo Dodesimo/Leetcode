@@ -999,3 +999,11 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - each border type DFS has own visited set
 - so we just find the union of these visited sets, because they represent cells that can be reached from each particular ocean
 	- union: both oceans 
+
+# Surrounded Regions
+- think about the reverse
+- all 0s in the border can't be surrounded because of the wall
+- do a dfs on them and mark them w/ temp symbol
+- iterate through the grid after and if its equal to 0, its truly surrounded so change to X
+	- if its a A, change to O (this couldn't be captured)
+
