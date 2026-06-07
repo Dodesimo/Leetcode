@@ -1007,3 +1007,24 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - iterate through the grid after and if its equal to 0, its truly surrounded so change to X
 	- if its a A, change to O (this couldn't be captured)
 
+
+# Open the Lock:
+- shortest path in a unweighted graph: BFS
+	- don't try DFS because that's just any path that gets you the target, so not efficient
+- deadends are added to visited set, so is the original sequence (as strings) then added to the queue as a list
+- adding logic:
+	- get a string version of the result
+	- check if in v if so return
+	- then add to queue as a list (COPY since python passes everything by reference)
+	- and add to visited as a string
+- adding:
+	- while queue has items iterate over each layer
+	- pop the list from queue and then for each item in the list
+		-  if we pop and its equal to target return that
+		- increment one modulo 10
+		- go back (reset) by decrementing one modulo 10
+		- then decrement one modulo 10
+		- go back reset by incrementing
+		- add each variant
+	- else:
+		return -1
