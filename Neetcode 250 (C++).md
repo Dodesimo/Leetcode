@@ -1030,4 +1030,32 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		return -1
 - og approach: use DFS but this checks everything
 	- before running algorithm think about what makes it easier
--
+- check whether the initial spot is a deadspot
+
+# Course Schedule
+- Create adjacency list b -> a
+- create visiting and visited sets
+	- visiting tracks the current path through the node
+	- visited is nodes completely processed
+- if we end up at the visiting set, return False (loop)
+- if we end up at the visited set, return True (because we already explored this node completely, this doesn't cause a loop)
+- add node to visiting set
+- then for all neighbors, do dfs and see if valid
+	- if not return false
+- move node from visiting to visited
+- return true
+- then for every course run this algorithm
+	- not just 0 because other disjoint piece could have a loop
+- if any component yields a false return false
+- else True
+
+# Course Schedule II
+- Same idea as Course Schedule 1, but while checking for loops, we construct a topological ordering of the graph
+- so after we process all neighbors and move to visiting, we add node to our result
+- then we run this algorithm on all courses:
+	- not just 0 because there could be loop in other disconnected component preventing all courses from being done
+	- also, because if there's no prereqs, we anticipate a random ordering of all independent courses
+		- processing all neighbors handles this
+- if any DFS returns a false as part of a loop, return empty list since no valid ordering
+- else return the result
+
