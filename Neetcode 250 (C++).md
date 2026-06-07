@@ -1059,3 +1059,17 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - if any DFS returns a false as part of a loop, return empty list since no valid ordering
 - else return the result
 
+# Graph Valid Tree
+- Key facts:
+	- Tree is a graph that's fully connected (one fully connected component) and has no cycles
+	- tree has exactly n - 1 edges (more not a tree)
+- create an adjacency list that bidirectional
+- have a visited set
+- have dfs function that accepts a node and its previous (to avoid case where loop exists from going back to parent)
+	- if node in visited return false
+	- then add to visited
+	- then go through all neighbors, if its equal to previous continue
+	- then do dfs on neighbor, if returns false return false
+- then at the end return true
+- for one connected component, need to run from the origin (0) and see whether the visited set is exactly the size of n
+	- reuslt is the logical and of dfs and the size of the visited set
