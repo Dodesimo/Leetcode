@@ -1028,3 +1028,6 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- add each variant
 	- else:
 		return -1
+- og approach: use DFS but this checks everything
+	- before running algorithm think about what makes it easier
+-
