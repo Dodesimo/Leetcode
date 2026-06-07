@@ -988,3 +988,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - if we break out of this main loop we know either our queue is empty or our fresh is 0
 	- if our fresh is 0, we found a possible time
 	- else -1
+
+# Pacific Atlantic Water Flow:
+- instead of running a dfs from every cell and seeing if both shores are reached, reverse thinking?
+	- from ocean can i reach this cell
+- for that, run dfs from all perimeter (row 0 means pacific, col 0 means pacific, last col means atlantic and last row means atlantic)
+	- each dfs returns if previous value is greater than current
+		- this is because that means the water couldn't flow since heading from cell to water, everything needs to be smaller (5 4 3 2 1)
+		- starting from the water to the top, each previous needs to be smaller than last
+- each border type DFS has own visited set
+- so we just find the union of these visited sets, because they represent cells that can be reached from each particular ocean
+	- union: both oceans 
