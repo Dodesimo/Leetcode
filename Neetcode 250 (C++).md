@@ -1079,3 +1079,9 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - for each node, track visited nodes and store them in a 2d grid w/ Trues showing they can be reached from the node False if not
 - then for each pre req, course, return the result from the 2d grid
 	- this works because going from A to B implies A is a prereq to B
+
+# Number of Connected Components in Undirected Graph
+- create adj. list of undirected graph
+- then do dfs w/ previous and just skip when previous = neighbor (our parent) (return when node in the visited)
+- then run this dfs on every single node that is not in the visited and increment count
+
