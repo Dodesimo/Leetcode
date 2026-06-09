@@ -1073,3 +1073,9 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then at the end return true
 - for one connected component, need to run from the origin (0) and see whether the visited set is exactly the size of n
 	- reuslt is the logical and of dfs and the size of the visited set
+
+# Course Schedule IV
+- trick: precompute prereqs
+- for each node, track visited nodes and store them in a 2d grid w/ Trues showing they can be reached from the node False if not
+- then for each pre req, course, return the result from the 2d grid
+	- this works because going from A to B implies A is a prereq to B
