@@ -1085,3 +1085,19 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then do dfs w/ previous and just skip when previous = neighbor (our parent) (return when node in the visited)
 - then run this dfs on every single node that is not in the visited and increment count
 
+# Redundant Connection
+- Union Find is easiest
+	- approach:
+		- ranks list with list 
+		- parents with each node as their own parent
+		- find:
+			- set current to node
+			- while the parent of current isn't equal to current (traversing up the tree)
+				- collapse: `self.parent[current] = self.parent[self.parent[current]]`
+			- return current when condition not true
+		- union:
+			- get the parent of both nodes
+			- if they the same return False, couldn't union
+			- else diff and if rank of one is greater than the other, greater one's rank gets added to and greater one becomes parent of the other
+- then iterate through edges in sequential order and then do union find and if something fails return false. 
+
