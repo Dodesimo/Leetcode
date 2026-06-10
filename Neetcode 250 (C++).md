@@ -1101,3 +1101,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 			- else diff and if rank of one is greater than the other, greater one's rank gets added to and greater one becomes parent of the other
 - then iterate through edges in sequential order and then do union find and if something fails return false. 
 
+# Accounts Merge:
+- index maps to unique person
+- maintain a map of address to index
+	- if the address already exists, merge indices
+- then, create a parent to email mapping
+	- find the parent for each index for each email
+	- then append the email to that parent
+- iterate over all parent, email lists
+	- create a result list
+	- for each parent, email
+	- add to the result the parent and the sorted email list
+- return result
+
