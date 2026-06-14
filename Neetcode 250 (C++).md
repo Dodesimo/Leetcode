@@ -1192,3 +1192,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- for i + 1 and i + 2 see if bounds if so the values retain, else they are 0
 	- then add the minimum of those two added to cost to the dp entry
 	- then we find the minimum of the first two values
+# Nth Tribonacci Number
+- dfs:
+	- if we reach the base cases just return those
+	- else, return dfs(i - 1) + dfs(i - 2) + dfs(i - 3)
+- memo:
+	- a lot of repeated work so use a memo
+- dp:
+	- if we have base cases just return immediately
+	- else create a dp of size (n + 1), since we go from 0 to n 
+	- then just iterate from 3 to end of DP array and then return the last item
