@@ -1114,3 +1114,38 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- add to the result the parent and the sorted email list
 - return result
 
+# Evaluate Division
+- Graph question
+- if you know a / b = 5, you know to get from a to b you can multiply 5 by b
+- so create an undirected two-way graph
+- then we do a dfs where we have a result and takes parameters current, previous, path, goal
+	- if we reach goal update result and then return true
+	- if in visited set return false
+	- add to visited set, then do dfs on all neighbors (if previous == since undirected continue), check if true if so return true
+		- dfs on all neighnors takes the path and multiplies w/ multiplier 
+	- at the end return false (means we couldn't reach the end from anywhere)
+- then have answer 
+	- if the start of query not in graph, append -1
+	- then initialize path value to 1, and then run a dfs (with start, end, path, value, previous default to float)
+		- if we reached, then append the path value
+		- else append -1
+	- then reset the visited set
+
+# Find Min Height:
+- min height exists at the midpoint
+- so we essentially want to go inwards from leaves and progressively remove leaves in order to find the min height till we get 2 nodes
+	- we can have one or two midpoints
+- create undirected graph adjacency list
+- create a deque for leaves and a dictionary for edge counts
+- go through all nodes
+	- if the length of the adjacency list is 1, add it to the deque
+	- then set the dictionary value
+- then while the deque has values,
+	- if n is <= 2, return the deque as a list
+	- get length, then pop node
+		- decrement n
+		- for each neighbor, subtract the edge count by 1
+		- if this results in a value of 1
+			- this is now a leave (only edge goes backward)
+			- add this to the leaves deque
+- at the end return deque as a list
