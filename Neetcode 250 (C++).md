@@ -1164,3 +1164,31 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- for each wild card to word mapping, add those words to queue and visited set
 	- increment layer outside
 - at the end of the queue, return 0 (means we couldn't find answer)
+
+# Climbing Stairs:
+- dfs:
+	- if i == n, 1 way to get to the top so we return 1
+	- if its greater than 0, 0 ways
+	- from i, # of ways to get to the top is dfs(i + 1) + dfs(i + 2) (top two)
+- memo:
+	- we have a lot of repeated sub problems so cache them through a memo
+- dp table:
+	- n + 1 entries: each represent a state (starting from 0)
+		- represents # of ways to get to state n from that position
+		- last entry is 1 because only one way to go from n to n
+	- then iterate backwards and if i + 1 and i + 2 are in bounds add them to dp entry
+	- return `dp[0]`: first state
+
+# Min Cost Climbing
+- dfs:
+	- if i >= len(costs), cost is 0 because we exceeded the target
+	- else we pay current cost and the minimum of either going one step or two steps
+- memo:
+	- since there's repeated subproblems we can cache our results
+- dp table:
+	- same # of entries as the input array
+	- each entry represents the best cost from beginning and including to that value
+		- last value would just be the cost since we can always go to the end
+	- for i + 1 and i + 2 see if bounds if so the values retain, else they are 0
+	- then add the minimum of those two added to cost to the dp entry
+	- then we find the minimum of the first two values
