@@ -1149,3 +1149,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 			- this is now a leave (only edge goes backward)
 			- add this to the leaves deque
 - at the end return deque as a list
+
+# Word Ladder
+ - this is a graph problem
+	- need to go from start to end as the middle words as transitions
+- to determine whether a middle word is possible to move to
+	- the current word and that word must be separated by one character difference
+	- this can be maintained by seeing if the two words have the same wildcard sequence where one character is represented as * and everything else remains the same
+- create list of wildcard to to word mapping
+	- add beginning to visited and queue
+	- pop from queue
+		- check if this word is the end if so return layer
+	- for each word, calculate wild card
+	- for each wild card to word mapping, add those words to queue and visited set
+	- increment layer outside
+- at the end of the queue, return 0 (means we couldn't find answer)
