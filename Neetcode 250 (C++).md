@@ -1202,3 +1202,31 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- if we have base cases just return immediately
 	- else create a dp of size (n + 1), since we go from 0 to n 
 	- then just iterate from 3 to end of DP array and then return the last item
+# House Robber:
+- dfs:
+	- if your i is greater than equal to the length of the array, not a valid index so return 0 (can't rob anything)
+		- for a particular index, can choose to pick it and then skip one (`value[i] + dfs(i + 2)`, or skip to the next index (`dfs(i + 1)`)
+- memo:
+	- since there's repeated subproblems, you can cache in a dictionary
+- dp:
+	- each index in dp table represents best profit there
+	- for the last index in the dp table (same size as the input array), its the `nums[-1]` value because its the last house (most you can do is rob it)
+	- then for indices that are valid, apply the above recurrence relationship
+
+# House Robber II:
+- if the first is connected to the last, we get two options:
+	- rob first, can't rob last (0 to n - 2)
+	- don't rob first, rob last (1 to n - 1)
+- dfs:
+	- dfs takes an i and bounds:
+		- same logic as above if i >= bounds return 0
+		- otherwise  `max(dfs(i + 1, limit), nums[i + 1] + dfs(i + 2, limit))`
+- memo:
+	- repeated subproblems, cache
+- DP:
+	- two dp arrays: takeOne and skipOne
+	- to do takeOne, we iterate from len(takeOne) - 2 since we skip last position, and then apply above recurrence relationship
+		- the bound is < len(takeOne - 1)
+	- for skipOne, we iterate from len(takeOne) - 1 all the way up to position 1 
+		- the bound is < len(takeOne) (since its the entire array)
+	- then at the end, we take the max of `takeOne[0]` and `takeOne[1]`
