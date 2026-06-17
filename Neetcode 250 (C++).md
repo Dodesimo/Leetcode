@@ -1230,3 +1230,11 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- for skipOne, we iterate from len(takeOne) - 1 all the way up to position 1 
 		- the bound is < len(takeOne) (since its the entire array)
 	- then at the end, we take the max of `takeOne[0]` and `takeOne[1]`
+
+# Longest Palindromic Substring
+- dp:
+	- i guess the idea is that individual characters are palindromes, and then if i + 1 to j - 1 is a palindrome, i to j is a palindrome if `s[i] == s[j]`
+	- this is dumb though
+- best approach:
+	- expand outwards while its palindromic, check if its greater than length and if so update global L and global R and the length
+	- need to check even and odd palindromes (i, i and i, i + 1)
