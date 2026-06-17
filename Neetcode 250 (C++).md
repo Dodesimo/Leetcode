@@ -1242,3 +1242,22 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 # Palindromic Substrings
 - same idea as longest palindromic substring, but just expand outwards while palindromic and increment counter while adjusting l pointer and r pointer
 - check even and odd palindromes
+
+# Decode Ways
+- brute force:
+	- if we exceed string length or we start at a 0 return 0
+	- if we are at end of string return 1
+	- initialize total, add dfs of going to next position
+	- then if we can formulate a valid number between 0 26 inclusive, dfs to i + 2 (skip next digit)
+		- this means we need to check next index is valid
+	- then return total
+- memo:
+	- we have a lot of sub problems so cache
+- DP:
+	- we have len(s) + 1 states (0 index to end of string)
+	- last is always 1
+	- then we iterate backwards and if we don't start with a 0
+		- add `dp[i + 1]` if in bounds
+		- if this position and next number formulate a valid number, add `dp[i + 2]`
+		- only if bounds, else add 0
+	- return `dp[0]`
