@@ -1238,3 +1238,7 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - best approach:
 	- expand outwards while its palindromic, check if its greater than length and if so update global L and global R and the length
 	- need to check even and odd palindromes (i, i and i, i + 1)
+
+# Palindromic Substrings
+- same idea as longest palindromic substring, but just expand outwards while palindromic and increment counter while adjusting l pointer and r pointer
+- check even and odd palindromes
