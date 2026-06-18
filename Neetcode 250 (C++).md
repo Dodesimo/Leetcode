@@ -1261,3 +1261,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- if this position and next number formulate a valid number, add `dp[i + 2]`
 		- only if bounds, else add 0
 	- return `dp[0]`
+
+# Coin Change:
+- brute force
+	- run dfs with amount, if amount < 0, return float('inf') because not valid 
+	- if amount = 0, return 0 (no more coins needed to get there), total = float('inf'), then iterate through all coins, min total with 1 + dfs(amount - coin) (we used one coin and we have amount - coin left)
+- memo:
+	- same idea, subproblems so cache
+- DP:
+	- 0 through amount states, amount - 1 states
+	- last entry is 0, go from amount to amount requires 0 coins
+	- then iterate backward through dp table
+		- iterate through all the coints
+			- if value + coin <= amount:
+				- `dp[i] = min(dp[i], 1 + dp[i + coin])`
+				- the number of coins needed for the remainder is one coin + the number of coins needed to make the rest of the remainder
