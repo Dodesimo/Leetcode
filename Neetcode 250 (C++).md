@@ -1289,3 +1289,37 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- and then set the minimum, maximum to these new values
 - return the maximum
 - need new values for minimum and maximum because we don't want to reuse intermediate values in the calculation of the other
+
+# Word Break:
+- recursive:
+	- if i > len(s) return  False
+	- if its exactly equal to len(s) return True
+	- then iterate through all of the words, if current i + len(w) substring of s is equal to the word and dfs(i + len(w)) is good, mark variable as true and then break
+	- return the variable
+- memo:
+	- repeated subproblems (breakage possible at i)
+	- cache results
+- dp:
+	- table of size (len(s) + 1), 0 through len(s) states, 
+	- last state is true, breaking nul; string into the S is always possible
+	- then we iterate backwards through i, and for each word, if the length of the word + i is within bounds and the substring matches, we can break from this point
+	- then set the `dp[i]` to the one thats `dp[i + len(w)]`
+	- return `dp[0]`
+
+# Longest Increasing Subsequence
+- recursive:
+	- every single number by itself is a LIS of 1
+	- so the base case is that if we equal the the last element thats automatically a LIS of 1
+	- then initalize LIS of 1
+	- then for each element to the right, check if its greater and if so, max LIS with 1 + dfs(j) (extending the LIS of index j by one)
+	- then return LIS
+	- since LIS can be anywhere in the array, we do DFS on each position
+- memo:
+	- we do repeated subwork so cache results
+- DP:
+	- dp table initialized as 1 (every item is its own LIS)
+	- create dp table w/ same size of input array
+	- then iterate backwards through dp table
+		- then iterate for each number from i to len(dp)
+			- if its greater than number at i, update the dp entry with the max of itself and then `1 + dp[j]` since we extend the LIS of J
+	- then find max across DP array
