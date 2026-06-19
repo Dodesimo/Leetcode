@@ -1323,3 +1323,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- then iterate for each number from i to len(dp)
 			- if its greater than number at i, update the dp entry with the max of itself and then `1 + dp[j]` since we extend the LIS of J
 	- then find max across DP array
+
+# Partition Equal Subset Sum
+- recursive:
+	- if the sum is odd, we can't do anything
+	- get the sum, divide by two
+	- then do pick unpick strategy and see if we can pick a subset 
+		- `dfs(i, left)`
+		- if left ever goes negative we return false
+		- if i ever exceeds the length of array return false
+		- if i == len(array) and then left == 0, return true
+		- then we or `dfs(i + 1, left)` and `dfs(i + 1, left - nums[i])`: pick or unpick
+- memo:
+	- memo we have repeated subwork
+- dp:
+	- create a 2d table, fill out, look more when we do a 2d Question
