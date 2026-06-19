@@ -1276,3 +1276,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 			- if value + coin <= amount:
 				- `dp[i] = min(dp[i], 1 + dp[i + coin])`
 				- the number of coins needed for the remainder is one coin + the number of coins needed to make the rest of the remainder
+# Maximum Product Subarray
+- this is like Kadane's algorithm
+- keep track of a minimum, maximum, globalMinimum, globalMaximum
+	- each of these are set to the first element to handle the edge case of just one element
+- for each element from index 1 and onwards,
+	- `newMinimum = min(nums[i], minimum * nums[i], maximum * nums[i])`
+		- either start the minimum subarray from this element or extend it where minimum and maximum are the encountered minimum or maximum so far
+			- we check both because of the situation a negative times negative = positive
+	- do the same for the maximum just w/ maximum
+	- then update the global minimum and maximum with these new values
+	- and then set the minimum, maximum to these new values
+- return the maximum
+- need new values for minimum and maximum because we don't want to reuse intermediate values in the calculation of the other
