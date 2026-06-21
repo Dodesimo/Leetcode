@@ -1338,3 +1338,22 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- memo we have repeated subwork
 - dp:
 	- create a 2d table, fill out, look more when we do a 2d Question
+
+# Combination Sum IV:
+- recursion:
+	- can't do pick/unpick because you need to access all the elements
+	- do dfs with a target
+	- if the target ever drops below 0 return 0 not a valid way
+	- if the target is equal to 0, that's one way
+	- for each number, increment a total w/ dfs(target - n)
+	- return the total
+- memo:
+	- since each dfs(t) state represents the number of ways to get to target starting at that t, we can cache states
+- dp:
+	- dp table representing states from 0 to target (target + 1)
+	- last item is 1 (1 way to get from target to target just don't do anything)
+	- then iterate from dp backwards, then for each n, if i + n is in bounds
+		- `dp[i] += dp[i + n]`
+		- if i can get to i + n, the number of ways i can get to the end can be incremented by the number of ways i can get to the end from `i + n`
+		- do this for all n to get all possible ways
+	- return `dp[0]`: represents number of ways to get to the target starting with an initial sum of 0
