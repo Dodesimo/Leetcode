@@ -1378,3 +1378,25 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 			- `dp[i] = min(dp[i], 1 + dp[i + s*s]`
 				- to get to `i + s*s` we used another perfect square so its 1 + that
 				- looping across all potential reasonable perfect squares (and s * s <= n - 1, since n - i is what's left)
+# Integer Break:
+- recursion:
+	- calculate what's left
+	- if left < 0: return float('-inf')
+	- then calculate for range 1 to left (left is exclusive because we can't do a split to 0)
+		- maxSplit = `max(maxSplit, i * dfs(maxSplit - i), i * (maxSplit - i))`
+			- second entry: split the rest 
+			- third entry, don't split the rest, keep it
+	- return the max
+- memo:
+	- we have repeated subwork for the maximization product of integers for what's left
+- dp:
+	- create dp table from 0 to n
+	- set first to 1: breaking 0 into max product just one thing
+	- iterate from 1 to len(dp) table:
+		- represents the total
+	- for each total, we have a start, and then we apply the above recurrence:
+		- `dp[total] = max(dp[total], start * dp[total - start], start * (total - start)`
+			- second: we split the remainder
+			- third: we keep the remainder
+	- last entry will represent the max product from splitting n
+	- return `dp[-1]`
