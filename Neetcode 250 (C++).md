@@ -1357,3 +1357,24 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- if i can get to i + n, the number of ways i can get to the end can be incremented by the number of ways i can get to the end from `i + n`
 		- do this for all n to get all possible ways
 	- return `dp[0]`: represents number of ways to get to the target starting with an initial sum of 0
+# Perfect Square:
+- recursion:
+	- have a "left" variable for dfs
+	- if its negative return float('inf') not a valid value
+	- then have a min moves
+	- then calculate perfect squares:
+		- go backward because that's more efficient since larger perfect squares are more likely to cause in least sums needed
+		- your limited by the left, so iterate from 1 to sqrt of left
+			- and then minimize the min moves value w itself and 1 + dfs(left - the calculated perfect square)
+	- return the the min value
+- memo:
+	- we have repeated subwork across states, so we put this in a dictionary
+- dp:
+	- create DP table from 0 to target (target - 1) entries
+	- each entry represents the number of perfect square sums needed to make that amount
+	- so for the last entry, its 0 since we are already at target
+	- then iterate backwards w/ loop variable i, and then calculate from 0 to sqrt(n) (those are potential values of sqrt)
+		- then if i + (s times s) is less than the length of Dp table
+			- `dp[i] = min(dp[i], 1 + dp[i + s*s]`
+				- to get to `i + s*s` we used another perfect square so its 1 + that
+				- looping across all potential reasonable perfect squares (and s * s <= n - 1, since n - i is what's left)
