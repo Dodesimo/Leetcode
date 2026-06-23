@@ -1400,3 +1400,26 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 			- third: we keep the remainder
 	- last entry will represent the max product from splitting n
 	- return `dp[-1]`
+
+# Stone Game III
+- recursion: 
+	- idea: instead of modeling each person's score, model score advantage one person has versus the other
+	- if end of a array return 0
+	- initialize a max, then maintain a sum
+	- iterate from i to min(i + 3, array length)
+		- add value to the number
+		- max the max value w itself and the sum chosen - dfs(j + 1) (since that's the other max advantage)
+	- return the max
+	- if dp[0] positive return Alice else if negative return Bob else return Tie 
+- memo:
+	- since we are doing repeated subword cache
+- dp:
+	- dp table: array of (length + 1)
+	- last entry: 0
+	- iterate backward
+	- have a sum variable and then iterate from (i, min(i + 3, array length))
+		- maximize dp array with itself and the `sum - dp[j + 1]`
+	- then do the same process as the start
+	- each dp entry represents the max difference in score for the person at that position
+		- 0 thus represents alice
+- 
