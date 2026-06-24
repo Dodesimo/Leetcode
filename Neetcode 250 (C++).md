@@ -1422,4 +1422,9 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then do the same process as the start
 	- each dp entry represents the max difference in score for the person at that position
 		- 0 thus represents alice
-- 
+
+# Insert Interval:
+- at each interval, if the start of the interval is completely after the new interval, we can insert the new interval and then return the result + the rest of the intervlas
+- if the start of the new interval is completely after the end of the new interval, the existing interval is added
+- else there's overlap so min firsts and max lasts
+- at the end we found the right spot to insert (everything before is merged and is the last position to insert)
