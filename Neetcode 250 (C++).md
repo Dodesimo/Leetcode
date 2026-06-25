@@ -1428,3 +1428,23 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - if the start of the new interval is completely after the end of the new interval, the existing interval is added
 - else there's overlap so min firsts and max lasts
 - at the end we found the right spot to insert (everything before is merged and is the last position to insert)
+
+# Merge Intervals:
+- sort intervals based on start: `key = lambda x: x[0]`
+- then add first interval to result
+- and then iterate from 1 to end 
+	- get the lastStart and lastEnd from the last item in results
+	- if the current interval start is less than the last end, merge through `min(lastStart, currentStart), max(currentEnd, lastEnd)`
+- return results
+
+
+# Non-Overlapping Intervals
+- idea: if we sort intervals by start, and process them incrementally as time proceeds, if we have an overlap, to minimize the # of overlapping intervals, we should maintain the interval with the smallest end to fit more intervals in
+- doing this, sort the intervals, then maintain a last end
+- iterate from 1 to end, and if there's overlap, make the last end the smallest end and increment
+- else, make the last end the current end interval (moving through time)
+
+# Meeting Rooms I
+- iterate through, see if first of second is less than last of first (indicate overlap)
+	- if so, return False
+- else return True
