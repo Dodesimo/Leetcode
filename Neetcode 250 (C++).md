@@ -1448,3 +1448,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - iterate through, see if first of second is less than last of first (indicate overlap)
 	- if so, return False
 - else return True
+
+# Meeting Rooms II
+- two approaches:
+	- line sweep:
+		- go through all starts and ends, increment starts, decrement ends
+		- then sort the hash map keys
+		- then go through these keys, every start increments the number of rooms, max with minimum number of rooms required,  else decrement
+	- two pointers 
+		- sort start times and end times
+		- if the start time is less than end time, increment start and number of rooms, max with minimum # of rooms required
+		- else increment end time
+		- move appropriate pointers for each situation
+- 
