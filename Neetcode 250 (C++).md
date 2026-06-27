@@ -1501,3 +1501,12 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - else return false
 - if in our transaction process we ever go negative, return False
 - outside the loop return True
+
+# Maximum Subarray:
+- Kadane's algorithm:
+	- keep a global and a running sum
+	- the global is initialized to the first element (in an edge case like one element array, its just that element)
+	- then iterate through numbers, add each number
+	- update the global
+	- if the run ever goes negative, make it 0
+	- handles edge case of just a single negative number (since the subarray must be populated)
