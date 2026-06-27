@@ -1475,3 +1475,19 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then we pop from available (the room)
 	- increase the count of the room
 	- then, add to used the end time and the room number
+
+# Minimum Interval to Include Each Query:
+- naive:
+	- iterate through all intervals for each query
+	- and just do what it asked
+- optimized:
+	- sort queries and intervals
+		- for queries, maintain the original index
+		- create a result of the size of queries
+		- interval pointer
+	- we only pass intervals at once:
+		- iterate through queries, and have interval pointer
+		- insert intervals to a heap with interval size, start, end while the start is less than equal to the query
+		- then push out everything that has a end <= query (that interval doesn't apply anymore)
+		- from here, we have the smallest at the top and then add it to the original index in result
+	- then return the result
