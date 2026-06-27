@@ -1460,4 +1460,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- if the start time is less than end time, increment start and number of rooms, max with minimum # of rooms required
 		- else increment end time
 		- move appropriate pointers for each situation
-- 
+- # Meeting Rooms III
+	- three conditions we need to maintain
+		- have meetings be in the lowest number
+		- no available rooms, delay until earliest room becomes free
+		- room unused, earlier starts need to be handled
+	- two min heaps:
+		- one heap handles available rooms
+		- one heap handles used rooms w/ end time and the room
+	- iterate through the rooms in chronological order
+		- pop things from used if less than equal to start time
+		- add those rooms to the available rooms
+	- if available is still empty, this means that there's no meeting available so we add it to available in the smallest possible room at endTime + (start - end) for the interval
+	- then we pop from available (the room)
+	- increase the count of the room
+	- then, add to used the end time and the room number
