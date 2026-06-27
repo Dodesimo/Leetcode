@@ -1491,3 +1491,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- then push out everything that has a end <= query (that interval doesn't apply anymore)
 		- from here, we have the smallest at the top and then add it to the original index in result
 	- then return the result
+# Lemonade Change
+- greedy idea: if you need to make change for a 15, always prefer using a 10 and a 5 over three fives because fives are more useful
+- also only maintain track of tens and fives because they are the only values that make sense to be used to make change
+- iterate over the bills, if its a 5, we just add our number of fives
+- if its a 10, we add to our tens and decrease our 5s (since we gave 5 in change)
+- if its 15, if we have both tens and fives, we prefer a 10 and a five (subtract a ten and a five)
+- else if the number of fives we have is greater than 3, we use those three (subtract three fives)
+- else return false
+- if in our transaction process we ever go negative, return False
+- outside the loop return True
