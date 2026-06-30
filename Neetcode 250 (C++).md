@@ -1510,3 +1510,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- update the global
 	- if the run ever goes negative, make it 0
 	- handles edge case of just a single negative number (since the subarray must be populated)
+
+# Maximum Sum Circular Subarray
+- Best normal non-wrapping subarray: globalMax
+- best wrapping: totalSum - globalMin
+	- the min could be continuous within, and if you subtract this
+	- and the max wraps around
+- so its either the Kadane's global max or total sum - Kadane's global min
+	- the normal or wrapped
+- calculate kadane's global max:
+	- add each number, update global, if negative 0
+- calculate global min:
+	- add each num, update global, if positive 0
+- if the sum is equal to the global min, all negative
+	- so just the global max would be the maximum sum
+- else return the max of Kadane's global max or total sum - Kadane's global min
