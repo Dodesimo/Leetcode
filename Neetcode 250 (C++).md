@@ -1525,3 +1525,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - if the sum is equal to the global min, all negative
 	- so just the global max would be the maximum sum
 - else return the max of Kadane's global max or total sum - Kadane's global min
+
+# Jump Game:
+- can do DP, but it goes to $O(N^2)$ because for each value in the array we iterate that much and see if the end is possible
+- better: set a goal
+	- this is the end of the array
+	- iterate backwards through the array
+	- see if the max possible thing reaches the goal or more.
+		- If so we can get there
+	- then move the goal to the current i position
+		- because we know we can get from i to the end (inductively)
+- then we check whether goal is 0 because we know sequentially we can only go backward if we could reach the end.
