@@ -1584,3 +1584,5 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- if sum ever goes negative, set it to 0, answer becomes i + 1 (the current index)
 - at the end return index
 	- if we never go negative this would just return 0 (a lot of surplus)
+- it's like Kadane's on the different array
+	- except when we are negative, answer is the next index of where we are because we know anything before wouldn't help since we would cut out a positive prefix sum
