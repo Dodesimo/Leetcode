@@ -1536,3 +1536,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then move the goal to the current i position
 		- because we know we can get from i to the end (inductively)
 - then we check whether goal is 0 because we know sequentially we can only go backward if we could reach the end.
+
+# Jump Game II:
+- Same idea with DP where we just track minimum values to get to the end from each position.
+- Better idea, have a left and right pointer that maintains the range of reachable indices.
+- while the right pointer is within len(nums) - 1, iterate over left through right, and calculate the farthest we can go from this range
+	- this ensures we capture the "largest window" for each possible jump
+ - then move left pointer to right + 1
+- and then the right to the farthest
+- then increment jump
+- and at the end return jump
+- this works because we iterate over each possible maximum-length window of jumps till we reach the end
+	- the number of windows we go through correspond to the number of jumps we need to take
+	- since each window is as large as possible, we ensure minimum jumps
