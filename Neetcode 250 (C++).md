@@ -1558,3 +1558,29 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - this works because we iterate over each possible maximum-length window of jumps till we reach the end
 	- the number of windows we go through correspond to the number of jumps we need to take
 	- since each window is as large as possible, we ensure minimum jumps
+
+# Jump Game VII:
+- pattern of having BFS on array to do greedy search.
+- DP works but TLES.
+- Idea, have a queue that maintains indices and the farthest index seen so far.
+- Pop from the queue and then add all indices from start jump to end jump that are 0s
+	- we also keep track of the farthest index to the right because we don't want to repeat.
+	- when we pop check if its the last index of string, if so return true. 
+- start gets maxxed out with the farthest + 1 and the min jump plus current position
+- iterate from this start to the minimum of the string length and index + maxJump (+ 1 to make it inclusive)
+	- if the position is 0 add it to the queue
+- then set the farthest to current + maxJum
+- at the end, return False
+
+# Gas Station
+- Key observations:
+	- if there are too much cost versus gas, return false (regardless of where u start, can never reach back)
+	- if you start at gas station a and at index c you become negative, there's no b in between a and c because those would be better since c is the first negative prefix sum, and everything before is a positive prefix sum
+		- starting after b reduces the amount of total net gas that you have that would be helpful so it wouldn't work
+- thus, check if sum(costs) > sum(gas).
+	- if so return -1
+- maintain a sum and answer
+	- add to the sum
+	- if sum ever goes negative, set it to 0, answer becomes i + 1 (the current index)
+- at the end return index
+	- if we never go negative this would just return 0 (a lot of surplus)
