@@ -1537,6 +1537,15 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- because we know we can get from i to the end (inductively)
 - then we check whether goal is 0 because we know sequentially we can only go backward if we could reach the end.
 
+# Longest Turbulent Subarray
+- we maintain track of the current run of alternating, result, and relationship (-1 if numbers are equal or initial state, 0 if current number is less than previous, and 1 if the current number is greater than previous)
+- iterate through n - 1, and if current number is less than the next number
+	- if we have seen the opposite  (relationship is 1), increment count, else make count 1 (just one element), then set the relationship to 0
+- if the current element is greater than the next number:
+	- if we have seen the opposite (relationship 0), increment count, else make count 1 (just one element), set relationship to 1
+- both these situations are set to a count of 1 because these two relationships can be the start of a longer turbulent sequence
+- if two numbers are equal, no way anything can be started so its 0 and relationship is -1
+- the number of elements in a sequence of N alternating signs will be n + 1
 # Jump Game II:
 - Same idea with DP where we just track minimum values to get to the end from each position.
 - Better idea, have a left and right pointer that maintains the range of reachable indices.
