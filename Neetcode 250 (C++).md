@@ -1538,7 +1538,7 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then we check whether goal is 0 because we know sequentially we can only go backward if we could reach the end.
 
 # Longest Turbulent Subarray
-- we maintain track of the current run of alternating, result, and relationship (-1 if numbers are equal or initial state, 0 if current number is less than previous, and 1 if the current number is greater than previous)
+- we maintain track of the current run of alternating, result, and relationship of last state (-1 if numbers are equal or initial state, 0 if decreasing, and 1 if increasing)
 - iterate through n - 1, and if current number is less than the next number
 	- if we have seen the opposite  (relationship is 1), increment count, else make count 1 (just one element), then set the relationship to 0
 - if the current element is greater than the next number:
