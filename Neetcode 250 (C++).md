@@ -1601,3 +1601,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- after the loop, we decrement the frequency of the smallest possible value we just popped
 	- if there's still items of the smallest left, we add to our heap.
 - so the heap tells us the smallest available value to start our group with.
+
+# Dota 2 Senate
+- can't just rely on total number of each senator and then if ties compare to the first index
+- the optimal strategy here is that each senator should eliminate the closest senator that s next to them
+	- that's because they are the one who gets a chance to ban you or teammate asap
+- so what we do is we maintain queues of positions of each senator based on position, then we iterate through the two queues and get the top two senators
+	- if radiant appears before dire, dire gets eliminated
+	- if dire appears before, radiant gets eliminated
+	- the surviving senator is added for the next turn (position + N (size of the string))
+- through this process, the queue that ends up with a single senator is the one that has the winner
