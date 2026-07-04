@@ -1586,3 +1586,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- if we never go negative this would just return 0 (a lot of surplus)
 - it's like Kadane's on the different array
 	- except when we are negative, answer is the next index of where we are because we know anything before wouldn't help since we would cut out a positive prefix sum
+
+# Hand of Straights
+- greedy intuition: when making groups we always want to take the smallest possible card because that maximizes the number of cards we can have to force a in-order sequence within group size
+- maintain a frequency of the cards
+- then add all unique keys to a heap
+- while we have the heap:
+	- pop the smallest possible card
+	- if this frequency is 0, then continue to the next one
+	- then iterate from 1 to the groupSize,
+		- calculate the expected card by adding to the smallest card
+		- and then seeing if the frequency is equal to 0 (if it is, we know we can't make it so return False)
+		- else decrement the frequency
+	- after the loop, we decrement the frequency of the smallest possible value we just popped
+	- if there's still items of the smallest left, we add to our heap.
+- so the heap tells us the smallest available value to start our group with.
