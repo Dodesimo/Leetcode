@@ -1632,3 +1632,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- last partition set to + 1 (the start inclusive, of the next partition)
 	- the farthest is latest index of current character
 - at end return result
+
+# Valid Parenthesis String
+- we keep track of the minimum unmatched open and maximum unmatched open
+- if we encounter a "(", we know for a fact this is going to increase both minimum unmatched open and maximum unmatched open
+- if we encounter a ")", we know for a fact this will reduce both since any opening brackets this is a for sure a closing bracket
+- if we have an asterisk we can either add a opening parenthesis or close a opening parenthesis
+- throughout this process if our max ever goes negative, that means we have too many closing parenthesis, so we return false
+- we always make min 0 since that means we can take some asterisk and make it empty space
+	- this is because min is the least possible, so we always force a closing
+- if our max is ever 0, that means we definitely have more ")"
+	- this is because max is the best case (conservative, only decrease when we see ")")
+- at the end, minimum and maximum represent the full range of possible open bracket values that cant be closed
+	- if 0 does not fall in this range that means we can't close at all, so we return False
