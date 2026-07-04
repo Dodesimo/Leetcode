@@ -1611,3 +1611,8 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- if dire appears before, radiant gets eliminated
 	- the surviving senator is added for the next turn (position + N (size of the string))
 - through this process, the queue that ends up with a single senator is the one that has the winner
+
+# Merge Triplets to Form Target Triplet:
+- key insight: no need to consider triplets that are larger than the target because if you max your result with that triplet, then you won't ever get to target.
+- so go through all triplets that have elements less than the target, and merge them
+- see if that equals the target
