@@ -1616,3 +1616,19 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - key insight: no need to consider triplets that are larger than the target because if you max your result with that triplet, then you won't ever get to target.
 - so go through all triplets that have elements less than the target, and merge them
 - see if that equals the target
+
+# Partition Labels
+- maintain track of the farthest index we have encountered so far
+- that's the limiting factor of how long each partition can be
+	- when we reach the farthest index so far, we know that the letter cannot appear again so it must fit within that partition
+	- a partition needs to contain all occurrences of a letter, so that can be tracked w/ the farthest right index of each character we have
+- so we track the farthest index each character has existed
+- and then we keep track of last partition index
+- as well as the farthest index
+- as we process characters, we max out farthest
+	- this handles edge case of character appearing in the last possible position
+- if we are at the farthest, we know this is the largest possible partition containing all occurrences of characters within 
+	- so we add farthest - lastPartition + 1 (this calculates the length since farthest and last partition are inclusive)
+	- last partition set to + 1 (the start inclusive, of the next partition)
+	- the farthest is latest index of current character
+- at end return result
