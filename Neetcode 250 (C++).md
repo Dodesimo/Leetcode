@@ -1658,3 +1658,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then iterate from right to left, and within bounds, check if the next rating is greater than current
 		- if so need to have more candies than right child but don't violate the left condition (check the max)
 - this guarantees smallest because this is incrementally building from a base of all 1s. 
+
+# Unique Paths:
+- can do dfs where dfs from row, column represents the number of ways to reach the final position
+- if we ever go out of bounds, return 0
+- if we get to the last position return a 1
+- then we return dfs from 0,0
+- but there's a lot of repeated subwork
+- so we can cache results
+- through memo
+- represent the same concept with a 2d dp table
+- last entry of 2d DP table is a 1
+- then we go backward through each row and column and add the value of (r + 1, c) or (r, c + 1)
+- then we return 0, 0 position
