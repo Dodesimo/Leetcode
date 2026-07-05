@@ -1671,3 +1671,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - last entry of 2d DP table is a 1
 - then we go backward through each row and column and add the value of (r + 1, c) or (r, c + 1)
 - then we return 0, 0 position
+
+# Unique Paths II:
+- can do dfs from where row, column represents the number of ways to reach the final position
+- ever out of bounds return 0
+- but if our current spot in the grid is a 1, return 0
+- then we return the sum of of `dfs(r + 1, c)` and `dfs(r, c + 1)`
+- since we have repeated work through overlapping subproblems, we cache.
+- we can also tabulate our solution where we have DP grid, last item is set to 1 since there's only one way to get to the last place
+- iterate backwards through rows, through cols
+- then keep adding in bounds the above recurrence relationship (continue to next iteration if there's an obstacle)
