@@ -1645,3 +1645,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- this is because max is the best case (conservative, only decrease when we see ")")
 - at the end, minimum and maximum represent the full range of possible open bracket values that cant be closed
 	- if 0 does not fall in this range that means we can't close at all, so we return False
+
+
+# Candy:
+- idea:
+	- every child starts with a candy, so the candy array should be populated w/ 1s
+	- a child that has a rating greater than both left child and right child gets more candies
+- approach:
+	- initialize 1 array w length of ratings
+	- iterate from left to right, and within bounds, check if previous rating is less than current.
+		- if so we need to have more candies than the left child (incrementally build up)
+	- then iterate from right to left, and within bounds, check if the next rating is greater than current
+		- if so need to have more candies than right child but don't violate the left condition (check the max)
+- this guarantees smallest because this is incrementally building from a base of all 1s. 
