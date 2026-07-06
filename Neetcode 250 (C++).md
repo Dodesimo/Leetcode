@@ -1681,3 +1681,12 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - we can also tabulate our solution where we have DP grid, last item is set to 1 since there's only one way to get to the last place
 - iterate backwards through rows, through cols
 - then keep adding in bounds the above recurrence relationship (continue to next iteration if there's an obstacle)
+
+# Minimum Path Sum:
+- same spiel above as dfs and then memo
+	- dfs: out of bounds, return float('inf')
+	- if at the end, we return the grid value
+	- then we return grid value + the min of r + 1, c and r, c + 1d
+- dp table represents the minimum path sum from that position to the last position
+- apply above recurrence iterating backwards through rows and columns
+- return the first entry
