@@ -1690,3 +1690,15 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - dp table represents the minimum path sum from that position to the last position
 - apply above recurrence iterating backwards through rows and columns
 - return the first entry
+
+# Longest Common Subsequence
+- recurrence relationship:
+	- `max(1 + dp[r + 1][c + 1], dp[r + 1][c], dp[r][c + 1])`
+		- if two things match, we can pick that and then move on, or skip to either of the other words (we want to take the max)
+	- `max(dp[r + 1][c], dp[r][c + 1])`
+		- if they don't match, we continue only with one word
+- if we have empty string and other string doesn't, 0 LCS
+- create DP table
+	- size of (text one  + 1) columns, size of (text two + 1) rows
+	- then iterate backward through text two backwards (the rows), iterate through text 1 (the columns), and then do the recurrence relationship above (stays in bounds)
+- return first entry of DP table
