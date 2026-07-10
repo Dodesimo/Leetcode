@@ -1702,3 +1702,22 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- size of (text one  + 1) columns, size of (text two + 1) rows
 	- then iterate backward through text two backwards (the rows), iterate through text 1 (the columns), and then do the recurrence relationship above (stays in bounds)
 - return first entry of DP table
+
+# Last Stone Weight II
+* hard to get intuitively
+ - Stone weight comparisons are just a chain of additions and subtractions
+ - so what this means is we need to do is partition into a positive sum and negative absolute sum and then subtract the two
+ - so pick and unpick strategy for half because we want to minimize this sum which can be done by half positive half negative
+	 - so target is half
+	 - then if we are at end of array then 0
+	 - if our target goes negative, return float('-inf')
+	 - then `max(stones[i] + dfs(i + 1, left - stones[i]), dfs(i + 1, target)`
+- can memo this
+- when doing dp table, create rows of indices and columns of targets
+	- indices range from 0 to len(array) (len(array) + 1) and 0 to target (target + 1)
+- then iterate through array backward (i) and target (t) backwards:
+	- if the t - `weight[i]` is bounded apply above recurrence relationship
+	- else make it `dp[i + 1][target]`
+- then we know that the positive sum is the last entry in the first row
+- the negative sum is the total minus the positive sum
+- we return the absolute value of their difference
