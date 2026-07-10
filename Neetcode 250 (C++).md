@@ -1715,6 +1715,7 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - can memo this
 - when doing dp table, create rows of indices and columns of targets
 	- indices range from 0 to len(array) (len(array) + 1) and 0 to target (target + 1)
+	- dp table being one extra position allows us to avoid checks
 - then iterate through array backward (i) and target (t) backwards:
 	- if the t - `weight[i]` is bounded apply above recurrence relationship
 	- else make it `dp[i + 1][target]`
