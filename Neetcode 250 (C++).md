@@ -1722,3 +1722,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then we know that the positive sum is the last entry in the first row
 - the negative sum is the total minus the positive sum
 - we return the absolute value of their difference
+
+# Best Time to Buy/Sell Stock w/ Cooldown
+- maintain state of if you can buy or sell stock at this point as well as index
+- if index is last position of array or exceeds, return 0
+- then if we can buy stock then we want max of move to next index or get a negative of the current index and go to the next index with the state flipped
+- if we can sell stock then we want max of move to the next index or get a positive of the current index value and go to the next index (which is i + 2) with state flipped
+- then run this dfs at 0,0
+- if we have a table just create with bounds i + 2 index wise and then each row has two things
+- memo for repetitive states, etc. 
+- then just apply the recurrence relationship
+	- we don't have to worry about bounds that way
