@@ -1733,3 +1733,20 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - memo for repetitive states, etc. 
 - then just apply the recurrence relationship
 	- we don't have to worry about bounds that way
+
+ # Coin Change II:
+ - if we our index ever exceeds the length of the array or the left value is ever negative, return 0
+ - if the left is equal to 0 return 1
+ - then for the particular coin we have the choice to take it and stay in the current coin only if in bounds`dp[i][a] += dp[i][a - coin]`.
+	 - We also have the choice of just carrying over from the next index
+	 - `dp[i][a] += dp[i + 1][a]`
+- memo wtvr
+- but for dp table, maintain columns of amount + 1, and rows of  i in range(len(string))
+- each row and column tells us the number of ways to get to the target starting at that amount and index
+	- the last column of the table should be all ones
+- then iterate through all indices of the array
+	- then all amounts starting form amount - 1 (since we don't want to overwrite the base cases)
+	- to simulate going to the next index just add i + 1 position w/ the same a
+	- to simulate picking a coin, check if adding to the current amount and the coin value is within bounds
+		- if so just add `dp[i][a + coinAmount]`
+- return first element of two d array
