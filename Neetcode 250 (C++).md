@@ -1734,7 +1734,7 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then just apply the recurrence relationship
 	- we don't have to worry about bounds that way
 
- # Coin Change II:
+# Coin Change II
  - if we our index ever exceeds the length of the array or the left value is ever negative, return 0
  - if the left is equal to 0 return 1
  - then for the particular coin we have the choice to take it and stay in the current coin only if in bounds`dp[i][a] += dp[i][a - coin]`.
@@ -1749,4 +1749,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- to simulate going to the next index just add i + 1 position w/ the same a
 	- to simulate picking a coin, check if adding to the current amount and the coin value is within bounds
 		- if so just add `dp[i][a + coinAmount]`
-- return first element of two d array
+	- return first element of two d array
+# Target Sum
+- to add symbols, its just seeing if you can add or subtract numbers to get the correct target
+- so your dfs sees whether i is at the end and the sum you have is equal to target
+	- return 1
+- if we are at the end and then the sum isn't equal to target
+	- return 0
+- then just do `dfs(i + 1, s + numbers[i]) + dfs(i + 1, s - numbers[i])`
+- memo this
+
+
