@@ -1786,3 +1786,20 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- and then apply the above recurrence relationship
 - so the positions in the table tell us if interleaving is possible from those positions
 - return at 0,0
+# Stone Game
+- any time you have a situation where there's a game with two players, it becomes 3d dp if you maintain the left and right
+- simplify by tracking the score difference for this player
+- if the left and right pointers are the same that is just the pile
+- since we can either take on the left or the right, we want to make the choice the maximizes the score difference so we do `max(nums[i] - dfs(i + 1, j), nums[j] - dfs(i, j - 1)`
+- you can memo and such
+- for the dp table approach:
+	- create table of size len(piles) by len(piles)
+	- have every instance where i and j are equal equal to the piles value 
+- then we do interval based dp approach
+- iterate over the length of piles 
+- and then have l iterate backwards (from r - 1 to 0 because we calculate i + 1 before i)
+	- for each position, calculate the max of `max(nums[i] - dfs(i + 1, j), nums[j] - dfs(i, j - 1)`
+	- this prevents going out of bounds
+- then we see whether the first entry is positive (indicating a positive score difference for the first person and they thus win)
+	- return true
+- else return false
