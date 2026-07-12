@@ -1756,7 +1756,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- return 1
 - if we are at the end and then the sum isn't equal to target
 	- return 0
+- this is because we need to use all numbers
 - then just do `dfs(i + 1, s + numbers[i]) + dfs(i + 1, s - numbers[i])`
 - memo this
-
-
+- for the tabular approach, since `s + numbers[i]`or `s - numbers[i]` can encompass a wide range, instead of having a preset table, use a list of dictionary
+	- each list index represents the first i numbers
+	- and we have information about the counts of all possible sums that can be made
+- we initialize `dp[0][0] = 1`
+	- this is because using the first 0 numbers and having a sum 0 can be done in only one way.
+- iterate over entire array
+- then for every single sum total pair in the corresponding dictionary
+	- do `dp[i + 1][sum - nums[i]] += count`
+	- do `dp[i + 1][sum + nums[i]] += count`
+- then we return the `dp[n][total]`
