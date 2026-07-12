@@ -1768,4 +1768,21 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then for every single sum total pair in the corresponding dictionary
 	- do `dp[i + 1][sum - nums[i]] += count`
 	- do `dp[i + 1][sum + nums[i]] += count`
-- then we return the `dp[n][total]`
+- then we return the `dp[n][total]
+
+# Interleaving String:
+- general intuition:
+	- if the third string is less than the first two, return false
+	- if we reach the end of the first string, then the rest of the third string starting from second string index + length of first string needs to equal the rest of the second string
+	- if we reach the end of the second string, then the rest of the third string starting from from first string index + length of second string needs to equal the rest of the first string
+- with these base cases, if the two strings in that position equal the third string's position, either could be picked so or with `dfs(i + 1, j) or dfs(i, j + 1)`
+- else if only one equals, move ahead with that index
+- else we return false because there's no match
+- we can use recursion here, but there's repeated subproblems so we memo answers
+- make a 2d dp table of columns of len(s2) + 1 and rows of len(s1) + 1
+- for base cases, its the last row and last column of the table
+	- iterate over the string that isn't complete and then see whether the remainder of the left string is equal to the third string with `i` + `len(complete string`)
+- then to avoid overwriting the base cases, just iterate over the string indices
+	- and then apply the above recurrence relationship
+- so the positions in the table tell us if interleaving is possible from those positions
+- return at 0,0
