@@ -1803,3 +1803,17 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then we see whether the first entry is positive (indicating a positive score difference for the first person and they thus win)
 	- return true
 - else return false
+
+# Stone Game II
+- calculate the difference in score Alice gets
+- then take the sum of all the stones and then we know:
+	- alice - bob = difference
+	- alice + bob = total
+	- so alice = `(difference + total)//2`
+- end of array, return 0
+- then iterate from i to min(`2*m` - 1)
+- add to the sum of stones picked, and then we dfs to (j, max(m, i -j + 1 (that's the number of piles picked)))
+- then we get the difference by doing `dfs(0, 1)`
+- then calculate the sum and and apply above equation
+- because each index can be reached from multiple other indices, we memo our dfs of (i, number of piles)
+- don't even bother with tabular for this not worth the confusion (revisit later?)
