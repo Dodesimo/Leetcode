@@ -1817,3 +1817,21 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then calculate the sum and and apply above equation
 - because each index can be reached from multiple other indices, we memo our dfs of (i, number of piles)
 - don't even bother with tabular for this not worth the confusion (revisit later?)
+
+# Edit Distance
+- if two words have the same letter, we move on
+- when we have to delete we can do it from either string and advance character for deleted string `dfs(i + 1, ,j)` or `dfs(i, j + 1)`
+- we we have to replace, we would replace it to induce a match and move both pointers.
+	- same idea when we have a insertion (insert to force a match)
+- so do dfs like this
+	- base case if one is used, to edit the other you would just do removals to populated string or insertions into empty string
+	- so the length of the string minus the index
+- else apply logic
+- can memo because we would have a lot of repeated states
+- do dp grid
+	- have rows, cols of size one more than string
+	- and then do base cases of iterate through rows or columns while making one thing constant (last row or last col)
+		- the length of the string - index
+- then iterate backward through strings and populate table through above recurrence
+- then return first entry of table
+	- each entry represents minimum number of edits from that index to the end
