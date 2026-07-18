@@ -1835,3 +1835,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then iterate backward through strings and populate table through above recurrence
 - then return first entry of table
 	- each entry represents minimum number of edits from that index to the end
+
+
+# Longest Increasing Path in a Matrix
+- we do dfs with a row, column, a previous value
+- if the row or column is ever out of bounds or the present value is less than the previous or the `(r, c)` is in the visited set:
+	- return 0
+- if the row, column pair is in the memo, return the longest increasing path starting from that box
+- else, store in the memo `1 + max(dfs(r + 1, c, current), dfs(r, c + 1, current), dfs(r - 1, c, current), dfs(r, c - 1, current))`
+- then we return it
+- and then we iterate through all rows, cols and then do a dfs
+	- refresh the visited set (reinit.)
+	- and then max out a variable w/ dfs
+- return the max variable
+- don't need a visited set
+- this is because we strictly go from smaller to greater (there's no loop backs that way, its a DAG)
