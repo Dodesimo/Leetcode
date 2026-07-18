@@ -1850,3 +1850,24 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - return the max variable
 - don't need a visited set
 - this is because we strictly go from smaller to greater (there's no loop backs that way, its a DAG)
+
+# Distinct Subsequences
+- the idea is that we have to use up t within s.
+- so our base cases is that if we reach the end of t, we return 1
+- if we use up s but we don't use up all of t, we return 0
+- if the two strings are equal at that character, we choose to take that character to use to make up t. but we could also skip and consider the next character
+	- ```aab
+	  ab
+	  ```
+	* so `dfs(i + 1, j + 1) + dfs(i + 1, j)`
+* if not equal, we are forced to pick the next character to match to t
+	* `dfs(i + 1, j)`
+* then we return this
+* we do repeated subwork so we memo
+* if we make a table, just make the rows and columns one more than the length of the individual strings.
+	* suppose that t is the rows and columns is j
+* we iterate through the columns w/ the last row set
+	* set that to 1, since we've reached the end of t
+* then iterate through t backwards in the rows, iterate through s in the columns, and use that to populate the dp table 
+	* bounds should always be fine since the dp table is one more than the size of the string
+* and then return the first entry of the dp table
