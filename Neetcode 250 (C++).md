@@ -1871,3 +1871,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 * then iterate through t backwards in the rows, iterate through s in the columns, and use that to populate the dp table 
 	* bounds should always be fine since the dp table is one more than the size of the string
 * and then return the first entry of the dp table
+
+# Burst Balloons
+- if we burst a balloon, there is chance that its left neighbor or right neighbor might get erased/eliminated
+- so can't just naively go to the left or right bound 
+- what we do is frame it as what happens when the balloon becomes the last balloon to get popped
+- within an interval `[l, r`]: we know that treating balloons as last popped within this interval by iterating through as a variable `j`, we know the balloons popped before and after this interval is `dfs(l, j - 1)` and `dfs(j + 1, r)`. we can add these interval values to the immediately after calculating `nums[l - 1] * nums[j] * nums[r + 1]`
+	- this is because we know the balloons outside this interval remain present
+	- pop all balloons in this interval and then pick the last balloon to pop (multiply with things outside the interval)
+- pad the input array with `[1]`
+- base case is that if the interval ever becomes empty return 0 (so if l > r)
+- then apply above recurrence relation, return that
