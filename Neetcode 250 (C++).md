@@ -1881,4 +1881,4 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- pop all balloons in this interval and then pick the last balloon to pop (multiply with things outside the interval)
 - pad the input array with `[1]`
 - base case is that if the interval ever becomes empty return 0 (so if l > r)
-- then apply above recurrence relation, return that
+- then apply above recurrence relation, return that `dfs(1, len(nums) - 2)`
