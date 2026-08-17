@@ -1901,3 +1901,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then check if its the end (rows - 1, cols - 1): if so return the min effort
 	- then iterate over all the directions and then check if the dr, dc + r, c is within bounds
 	- and then add them to the heap (we maintain the max of the existing minEffort and the subtracting the differences between the two consecutive items)
+
+# Network Delay Time
+- Djikstra's
+- idea: minimum time to reach all signals is based on the largest accumulative time found throughout traversing the graph
+- so:
+	- create a directed adjacency list w/ the weights
+	- then maintain a max time and a visited set and a heap
+	- the heap should have the starting node
+	- then keep popping from the heap while the heap has things
+	- then if the heap popped is in the visited set continue
+	- then max out the time with the time encountered so far
+	- then add all neighbors and add the weight to the existing time
+- then after this, return the max time if the length of the visited set is the number of nodes
