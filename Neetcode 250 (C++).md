@@ -1882,3 +1882,22 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - pad the input array with `[1]`
 - base case is that if the interval ever becomes empty return 0 (so if l > r)
 - then apply above recurrence relation, return that `dfs(1, len(nums) - 2)`
+
+# Wildcard Expression Matching
+- look at this later
+
+# Path With Minimum Effort
+- important idea:
+	- when you pop from the min heap in Djikstra's, you know that that position (row, col) has had its minimum effort found
+	- in BFS, because every edge has the same cost, the first you discover a node, that's already the shortest path
+		- so we mark nodes as visited when we have found the shortest path
+	- in Djikstra's discovering a node doesn't mean we have found the best path yet (only when pop since thats the smallest value so far)
+			- so adding it to the visited set when seeing it is premature because there could be another path that is less that gets ignored because of the visited set
+- dfs with a min heap:
+	- heap has the starting position with a difference of 0
+	- while the heap has stuff, pop
+	- if the item is in the visited, that means we already found a minimum effort path (this existed earlier):
+		- return
+	- then check if its the end (rows - 1, cols - 1): if so return the min effort
+	- then iterate over all the directions and then check if the dr, dc + r, c is within bounds
+	- and then add them to the heap (we maintain the max of the existing minEffort and the subtracting the differences between the two consecutive items)
