@@ -1938,4 +1938,15 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- add to the total the distance of the best node
 		- node becomes next node
 	- return the total
-- 
+
+# Cheapest Flights Within K Stops
+- k stops require k + 1 edges
+- have an array of k entries (each representing a stop)
+	- key: the src has a 0 cheapest price, and the adjacencies are all infinities
+- and then iterate k + 1 times
+- for each time, maintain a copy that we write into
+	- iterate through all sources (indices of the array) and then for all adjacencies, add the weight to the source (reading from the original) and updating what we are writing to (the temp) if its less than existing temp
+	- we also read from the original in order to ensure we only allow one edge at a time (imagine we update the temp array such that a float(inf) becomes a value and then using that later would result in two edges getting considered)
+	- update the temp
+- then the temp becomes the original
+- and then return the original's value at the destination index if it is not `float('inf')` else return -1
