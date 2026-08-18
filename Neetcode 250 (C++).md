@@ -1914,3 +1914,28 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then max out the time with the time encountered so far
 	- then add all neighbors and add the weight to the existing time
 - then after this, return the max time if the length of the visited set is the number of nodes
+
+# Min Cost to Connect All Points
+- idea:
+	- we want to always pick the smallest weight (cost) available
+- one way (not optimal):
+	- place in min heap the cost and the x, y
+	- then while the heap has items, pop
+	- if seen then continue
+	- else add to visited set, add to total, and then iterate through all other neighbors, calculate the cost, and add to heap
+	- `O(n^2 log n)`
+- another way:
+	- maintain a visited array and a distances array representing the smallest distances
+	- maintain current node and number of edges and the total
+	- since the number of edges for a MST has to be n - 1, keep doing the following while edges is less than n - 1
+		- mark present node as visited
+		- increment edges
+		- maintain. next node
+		- iterate over all points
+			- calculate the distance to all other points from this node
+			- update distances array
+			- if the best distance to this node in i is less than the distance for the next node or there is no previous node, update it 
+		- add to the total the distance of the best node
+		- node becomes next node
+	- return the total
+- 
