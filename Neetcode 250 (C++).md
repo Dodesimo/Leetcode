@@ -1941,6 +1941,7 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 
 # Cheapest Flights Within K Stops
 - k stops require k + 1 edges
+- create adjacency list
 - have an array of k entries (each representing a stop)
 	- key: the src has a 0 cheapest price, and the adjacencies are all infinities
 - and then iterate k + 1 times
@@ -1950,3 +1951,12 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- update the temp
 - then the temp becomes the original
 - and then return the original's value at the destination index if it is not `float('inf')` else return -1
+
+# Reconstruct Iternary
+- topological sort to get the correct order
+- in order to ensure that the order is lexically the same order we sort each value and operate on the last in order to ensure that the lexically smallest places appear first
+- then we always pop off of the last item in the list and then do the topo sort on that
+	- if we use a direct for loop then we we would have to check the validity of the size of the adjacency list values
+	- using `while` circumvents that
+- and then we append to result
+- and then we reverse the result
