@@ -1960,3 +1960,13 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- using `while` circumvents that
 - and then we append to result
 - and then we reverse the result
+
+# Swim in Rising Water
+- key idea: we want a path from the top left to the bottom right whose greatest grid value is the least possible amongst all paths
+- we do a modified Dijkstra's where the first value in our heap is the largest value we have encountered on this path so far
+- in our heap we add the first value (top left) and 0, 0 for the row and column
+- then we pop from the heap
+- check if in visited set, if so false
+- then check if its the end and if so return the largest seen value and then add to visited set 
+- then go through directions, validate updated cell spots, and then update the newLargestSeen value and then push that onto the heap
+- sentinel return -1
