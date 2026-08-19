@@ -1970,3 +1970,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then check if its the end and if so return the largest seen value and then add to visited set 
 - then go through directions, validate updated cell spots, and then update the newLargestSeen value and then push that onto the heap
 - sentinel return -1
+
+# Alien Dictionary
+- idea: we need to create an adjacency list of characters
+	- the first difference in lexicographic order tells us what word is before another
+	- additionally, we need all characters in our adjacency list
+	- additionally, if the two words are the same as per the minimum and the second one is the smaller one, invalid
+- approach:
+	- iterate through all words and adjacency list initialize with the character
+	- then iterate through words two at a time, iterate over the minimum
+	- if there's a difference see if the first character appears in the second character's adj list
+		-  if so invalid
+	- else, mark a difference
+	- after doing the character-wise comparison, if there's no differences and the condition mentioned is true, return ""
+	- there could be indirect loops in the graph, so then do a toposort w/ visiting and visited sets and then iterate through all characters and see when the topo sort is has an indirect loop
+	- and then return reversed result and join as a string
