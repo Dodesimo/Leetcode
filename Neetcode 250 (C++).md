@@ -2005,3 +2005,15 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then iterate through all edges, exclude edge with the current index and False flag, include edge with current index and True flag
 	- apply above filtering logic
 	- return the lists
+
+# Build a Matrix With Conditions
+- idea: the row conditions and col conditions are essentially ordering constraints
+	- so if you get a topological ordering of the rows and the cols you can then fill the matrix
+	- if there are loops, we know that its invalid
+- so do topological sorts on the rows and columns
+- major realization (would have figured this out with enough time):
+	- the indices of the value in the corresponding values are the corresponding indices within the matrix
+		- look at patterns within the matrices with rows/cols
+- so then for each row and column map the number to the index
+- then iterate through 1 to k + 1 and then populate the matrix that way
+
