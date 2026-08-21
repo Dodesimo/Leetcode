@@ -2037,4 +2037,12 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then create a mapping of factors to indices
 - then union all indices that are in the same value list for a factor (since they share a factor and the gcd is greater than 1)
 - then iterate through all indices and ensure that they have the same parent
-- 
+
+# Excel Sheet Column Tile
+- we need to convert base ten to a 1-based base 26 
+- so while the column number is not zero
+	- subtract 1 (this is to do modulo w/  base ten)
+	- mod it 
+	- then add the remainder + 65, cast that to a character
+	- then divide the value by 26, go to next significant digit
+- return the reversed list joined as a string
