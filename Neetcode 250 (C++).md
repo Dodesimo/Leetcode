@@ -1985,3 +1985,23 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- after doing the character-wise comparison, if there's no differences and the condition mentioned is true, return ""
 	- there could be indirect loops in the graph, so then do a toposort w/ visiting and visited sets and then iterate through all characters and see when the topo sort is has an indirect loop
 	- and then return reversed result and join as a string
+
+# Find Critical and Pseudo-Critical Edges in MST
+- idea:
+	- critical edges: if we have a MST of all edges in the graph and we exclude the edge from our MST or the graph becomes disconnected, the resulting MST weight is greater
+	- pseudo-critical edge:
+		- if we exclude and no change happens, we force to start with this MST and then run Kruskal's for the rest of the edges
+	- so use kruskal's with union find data structure
+	- sort indices and maintain the original index in the structure with enumerate
+	- use a MST method that specifies a current index and start flag
+		- inside we create union find data structure
+		- and then total and count variables
+		- if we have start specified start with the current index, that forces the first edge to be unioned to be that 
+	- then iterate through the sorted edges, avoid iterating over the same edge (so start flag being false skips the inclusion of this edge)
+		- union add stuff to total
+		- increment count
+		- and then return total if the count is equal to n - 1 else float('inf') (because disconnected)
+	- then maintain original mst to -1, false including all edges
+	- then iterate through all edges, exclude edge with the current index and False flag, include edge with current index and True flag
+	- apply above filtering logic
+	- return the lists
