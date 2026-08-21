@@ -2017,3 +2017,24 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - so then for each row and column map the number to the index
 - then iterate through 1 to k + 1 and then populate the matrix that way
 
+# Greatest Common Divisor Traversal
+- realization:
+	- for all possible indices in nums there exists edges between numbers if they have a gcd that is greater than 1
+	-  is the graph connected?
+	- if two numbers have a gcd > 1 they must share some prime factors
+- first we calculate the smallest prime factor for all numbers up to the max of the numbers
+	- create a list of smallest prime factors
+	- iterate from 2 to the square root of N (these are the possible factors)
+	- if the `spf[p] == p`: 
+		- that means its prime so go through all multiples and mark that as the smallest prime factor
+	- return the smallest prime factor
+- prime factorize:
+	- create a set of factors
+	-  get the smallest prime factor of the current number and add it to the factors
+	- and then floor divide by the smallest prime factor
+	- keep doing above steps while n > 1
+	- return factors
+- then create a mapping of factors to indices
+- then union all indices that are in the same value list for a factor (since they share a factor and the gcd is greater than 1)
+- then iterate through all indices and ensure that they have the same parent
+- 
