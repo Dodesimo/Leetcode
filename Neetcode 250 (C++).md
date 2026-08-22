@@ -2046,3 +2046,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then add the remainder + 65, cast that to a character
 	- then divide the value by 26, go to next significant digit
 - return the reversed list joined as a string
+
+# Greatest Common Divisor of Strings
+- naive way i was doing:
+	- the gcd would be a string that divides into both strings (meaning the prefix is the same across)
+	- so get the smallest string
+	- initialize the prefix match as strue
+	- then construct a prefix up to the length of the smallest string, and then iterate through str1 and str2 and do a match
+	- if a match fails, match gets set to false and we break
+	- if the match was true, then we set the prefix to it
+- optimize
+	- if the two strings concatenated in any way are equal there's a repeating pattern throughout
+	- the length of the string would be the GCD of the two string lengths
+	- then extract that from the longer string
