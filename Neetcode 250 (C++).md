@@ -2130,3 +2130,10 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 		- fast moves twice w/ ss
 - at the end return False
 
+# Plus One
+- straightforward:
+	- if we add one, we immediately return
+	- if it equals ten, then we have to carry over the one, so set the current value to 0
+	- so if adding to the digit is less than ten return digits
+	- else we set it to 0
+	- and then add `[1]` as a prefix to the digits
