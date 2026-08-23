@@ -2148,3 +2148,16 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- return the total
 - then just return this if n >= 0 else return the reciprocal called on the dfs with an absolute value
 
+# Multiply Strings
+- so the way i did it was iterate over one string, and multiply the corresponding place value with the other number and keep adding to a result
+	- this requires maintaining track of place value
+- however a better way is create a length of result that is the sum of the two numbers
+	- that's the max the product can be
+- then we reverse both numbers and iterate through them
+	- result index represents the digit at the 10^k place
+	- so we multiply two indices' values and add at the i + j position
+	- and then we take the value of the i + j position and then divide by ten to get the carry and add it to the next index
+	- and then we mod the value to ensure there's only a single value
+- then we reverse the results, convert to string
+- and then iterate till we get all leading 0s
+- and then join as string from beg to the end
