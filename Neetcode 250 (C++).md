@@ -2137,3 +2137,14 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- so if adding to the digit is less than ten return digits
 	- else we set it to 0
 	- and then add `[1]` as a prefix to the digits
+
+# Pow(x , n)
+- can naively just iterate and multiply x n times but that's O(n)
+- do divide and conquer approach
+	- `dfs(x, n)`
+	- if n == 0: return 1
+	- then we calculate half and then multiply half (just one recursive call)
+	- and then if the n is mod by two, multiply total by x
+	- return the total
+- then just return this if n >= 0 else return the reciprocal called on the dfs with an absolute value
+
