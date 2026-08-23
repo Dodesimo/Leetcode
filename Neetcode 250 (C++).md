@@ -2103,3 +2103,15 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- iterate through the left
 	- increment left
 - return result
+
+# Set Matrix Zeroes
+- just make sure the ordering is correct
+- can just maintain a hashset of rows and columns and then iterate over table and set that to 0 if the row in hashset or columns
+- cleverer:
+	- use the first row and first column as a marker for zeroes
+	- also have a marker for the first row and first column as booleans
+	- then iterate through the matrix, if zeroes fall in first row or first column set the appropriate marker to 0
+	- then iterate through the inner matrix and if its marker is 0 (either row or col), then set it to zero
+		- don't iterate through the rows, cols to do this because we are going to iterate over all the entries anyway
+	- after this, depending on the row/col marker (firstRowZero, firstColZero) we set the corresponding first row or col to 0
+- 
