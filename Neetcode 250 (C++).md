@@ -2114,4 +2114,19 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- then iterate through the inner matrix and if its marker is 0 (either row or col), then set it to zero
 		- don't iterate through the rows, cols to do this because we are going to iterate over all the entries anyway
 	- after this, depending on the row/col marker (firstRowZero, firstColZero) we set the corresponding first row or col to 0
-- 
+
+# Happy Number
+ - get a helper sum of squares function `ss(n)`
+	 - easy to code
+- then use floyd hare turtle algorithm:
+	- slow is ss on the first n
+	- fast  is ss on the ss of the next
+	- while  True
+		- if the slow is equal to 1
+			- return True
+		- if the slow and fast are equal
+			- return False
+		- slow moves once w/ ss
+		- fast moves twice w/ ss
+- at the end return False
+
