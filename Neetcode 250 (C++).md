@@ -2161,3 +2161,18 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 - then we reverse the results, convert to string
 - and then iterate till we get all leading 0s
 - and then join as string from beg to the end
+
+# Detect Squares
+- maintain a frequency map of points encountered
+- in add, increment
+- then for count
+	- maintain a total
+	- then iterate through other x and other y points
+	- treat these as diagonals of the square
+	- bottom right point has the x of the original and the y of the other point
+	- top left point has the x of the other point and y of the original
+	- then we see whether the delta x and delta y is the same because that would force the other two sides to be the same for it to be an enclosed shape
+	- then if the other two points are in the count, then we multiply all of them
+		- not min, because if we have 2 upper left, 2 bottom right, and then three other diagonal, each of them can form one square with the other points, so multiply all of them
+	- if we run into the same point as our query, continue
+- return the total
