@@ -2059,3 +2059,47 @@ Rest questions I will do in Python because I have enough experience w/ C++ codin
 	- if the two strings concatenated in any way are equal there's a repeating pattern throughout
 	- the length of the string would be the GCD of the two string lengths
 	- then extract that from the longer string
+
+# Transpose Matrix
+- if it is actually square just do in place
+- else do a list comprehension and make it
+
+# Insert Greatest Common Divisors in Linked List
+- really straightforward
+- maintain a gcd function that is Euclid's function
+	- ```
+	  def gcd(a, b):
+		if b == 0:
+			return a
+		return gcd(b, a % b)
+	  ```
+* if the linked list just has one item then return that
+	* else, we maintain a previous pointer and a next pointer
+	* while n
+		* maintain the nextPrevious (which is n)
+		* and the next which is nextN
+		* calculate the gcd 
+		* place it in the node
+		* and then move the p, n pointers to the correct values
+	* then return head
+
+
+# Rotate Image
+- really straightforward:
+	- just transpose square matrix
+	- operate on the upper triangular indices and then swap with the bottom triangular values 
+
+# Spiral Matrix
+- have four bounds: top, bottom, left, right
+	- the bottom and right are exclusive
+- while we are in bounds (top < bottom) and (left < right)
+	- iterate through the top, adding to the result with the bounds of left right
+	- increase top
+	- then iterate through the right most
+	- then decrement right
+	- check whether the left is equal to the right or the top is equal to the bottom, because that means we ran out in our bounds
+	- and then iterate through bottom
+	- decrement the bottom
+	- iterate through the left
+	- increment left
+- return result
