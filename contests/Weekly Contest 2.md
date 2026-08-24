@@ -1,0 +1,24 @@
+- find the difference
+	- what i thought about maintain a frequency count and then see what character in the second string has more
+	- can also sum ascii values or do xor
+		- remembering XOR'ing against a 0 is the same value
+	- its like missing number
+- elimination game:
+	- this one is super hard intuitively
+	- idea is that the head of the pattern gets eliminated only when we traverse left or if we have a odd number of remaining items when we go from right to the left
+	- we increment the head by a multiple of two every single time
+	- and every iteration our remaining number of items gets halved
+	- so while we have remaining items, we see if we are in the left or if we have odd, and if so we increment our head
+	- then we multiply our step by two
+	- and then switch direction (left flag)
+	- and then we return head
+	- the idea is that we don't naively simulate because that would be n log n
+- rectangle cover:
+	- super cool, to get all the distinct points of the larger bounding rectangle we can maintain a set of all possible corners given x, y, a, b and then if the corner appears in that set we remove it else we add it
+		- this ensures that only boundary corners that only one rectangle has is there
+	- while doing this to prevent overlaps, we calculate the area of each rectangle and ensure that its the same as the total large one
+	- for the bounding we care about the min and max of each coordinate 
+	- then we check whether our corner set is four items (should the four bounding ones)
+		- if not false
+	- then go through the corner set and see that any of the bounding ones are not there return false
+	- then for overlap calculate the larger rectangle area and then check whether that equals the whole
