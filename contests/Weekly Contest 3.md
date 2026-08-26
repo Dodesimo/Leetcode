@@ -1,0 +1,30 @@
+- is subsequence:
+	- two pointers
+	- keep comparing characters between first string and second string
+	- if they are equal we increment both points
+	- and if they are different we go to the next character in t
+	- and then we see whether we used all of s by doing i == len(s) checkj
+- decode utf 8
+	- fade bit manip
+- decode string:
+	- keep adding items to a stack till we reach a closing bracket
+	- when we hit a closing bracket, pop all characters, place in list, reverse list
+	- then pop the open bracket
+	- then keep popping items that are digits and reconstruct the number
+	- convert this to an integer and then multiply the resulting string list by that number
+- longest substring (revisit)
+	- divide and conquer, iterate through for each string the frequency
+	- if the interval is one, return 1 if the frequency of the character is geq k else 0
+	- then iterate through the string, and see if there's a character that doesn't have frequency of k if so disjoint interval processing on that
+	- and then if the partition is equal to float('-inf'): meaning there was no mismatch, return j - i
+	- else we return the partition
+	- better approach:
+		- we can brute force over all relevant substrings by enforcing a number of unique characters
+		- we ask the longest substring that can contain at most distinct characters where every character appears at least k times
+			- this most distinct characters allows for clean sliding window approach
+				- if more, contract
+				- less ex tend
+		- for each number of unique characters, we initialize a hash set and process by increasing frequency, and if the number of unique things is greater than uniqueCharacters, we keep moving left pointer and deleting when frequency hits 0
+		- then if the frequency count has all values that are greater than k, we update our maxLength
+	- then we increment r
+	- return maxLength after
