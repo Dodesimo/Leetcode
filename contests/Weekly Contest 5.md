@@ -27,3 +27,23 @@
 			- else add to the minutes
 		- then skip it by just incrementing i index
 		- this ensures there aren't duplicate values created
+- remove k digits:
+	- idea: we need to get rid of all greater digits that appear before smaller ones going left to right because most significant digits are there
+	- monotonic stack that is increasing:
+		- add items if they increase (greater than the top)
+		- but if its less than the top, we pop from stack and subtract from k
+		- keep doing this while we have k > 0 and our mono_stack has items
+			- this ensures that postfix values are added
+	- after this, if we still have k items, we know that the greatest digits exist towards the tail 
+	- so extract a prefix len(mono_stack) - k
+	- then get rid of trailing zeroes by iterating through
+	- then if result list has items return it joined as a string
+	- else return "0"
+- frog jump:
+	- classic dp
+	- from a particular stone index, we need to see whether the nxet stone exists based on the previous jump and if so move to that index and update the pervious jump
+		- we also want the jump distance to never be negative (means we move backward) or just 0
+	- maintain a hashmap of stone to index in order to do this
+	- then in dfs(i, previousJump), if in memo return value if i >= len(array) return false
+	- and then for range of -1 to 2 all posssible jumps, if the current position + jump + j in the memo and the jump is positive, update memo with the result OR'd of dfs call to the index mapping of the new stone weight and then if memo value true return and break
+	- we call dfs at 0 and 0 bc the first jump has to be 1 so previous jump there's nothing (0)
