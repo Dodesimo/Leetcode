@@ -1,0 +1,23 @@
+- convert decimal number to hexadecimal
+	- if negative, we know that in the 32 bit two's complement representation grouping four bits at a time will give us the hex values
+	- so if the number is negative, get the 32 bit two's complement by flipping all the bits of the positive number, add one, and then mask to 32 bits
+	- then have a lookup map for results greater than 9 up to 15
+	- then keep dividing by 16 and mod by 16 
+- queue reconstruction by height:
+	- greedy:
+		- placing the tallest people early makes sense because most of the others can count them towards the ones that are greater than them in height
+		- as we iterate, we know we have all the greater values processed already. so when we sequentially iterate and process a person, there's already whatever the length of results variable of people that are greater than them or equal to. to fulfill the second condition place them in the correct index
+- trapping rain water II
+	- idea:
+		- can't do basic trapping rain water because there's multiple directions water could enter through 
+		- we care about the max height in outer path because we can't store more water than that
+		- we also want a path that has the smallest largest value because that limits us
+			- on the boundary, if there's a ten and a 2, and our largest path has the 10, we that's not accurate because water could flow out from the 2 so that's why the lease matters
+		- so we use modified djikstra's using min heap of the largest boundary value and then process that way
+			- add boundary cells to heap
+			- heapify
+			- then while heap, pop, if greater value we popped is less than the current cell value, we add to our total since water can flow
+				- skip in visited set
+			- then add to visited set
+			- then for all directions if in bounds, add to the heap the max value of the max pop and the the visited value 
+		- this is very similar to: https://leetcode.com/problems/path-with-minimum-effort/description/, but just presented in a difficult to catch way
