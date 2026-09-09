@@ -1,0 +1,20 @@
+- valid word abbr:
+	- two pointers:
+		- word and abbr pointer
+		- if two nonnumeric characters match advance both pointers
+		- if the abbr value is numeric, reject if 0 because can't be leading
+		- then accumulate the value (moves the abbr pointer)
+		- and then advance the word pointer by that
+		- at the end we care if both pointers reach the end of their corresponding string EXACTLY can't overshoot
+- longest palindrome:
+	- super easy i blanked
+	- every character can contribute the largest multiple of two worth of characters to the palindrome
+	- if we have a odd frequency, we can extend the length of our palindrome by inserting that extra character within the middle of the palindrome
+	- so maintain hash map of frequencies
+	- add the largest multiple of two
+	- if any of the frequencies were odd, add one to the length
+- split array largest sum:
+	- binary search
+        idea is that we try to find a sum in range of 0 to sum of nums
+        see if we can form at most k subgroups that is <= k (if we form less its find we can split more)
+        if possible, try a smaller sum, else if not possible (meaning we greater than k subgroups), we increase the sum to create smaller subgroups
