@@ -15,6 +15,9 @@
 	- if any of the frequencies were odd, add one to the length
 - split array largest sum:
 	- binary search
-        idea is that we try to find a sum in range of 0 to sum of nums
-        see if we can form at most k subgroups that is <= k (if we form less its find we can split more)
-        if possible, try a smaller sum, else if not possible (meaning we greater than k subgroups), we increase the sum to create smaller subgroups
+		- idea is that we try to find a sum in range of 0 to sum of nums
+		- see if we can form at most k subgroups that is <= k (if we form less its find we can split more)
+			- if the number we are at ends up being greater than the target, no way we can fit it
+		- if possible, try a smaller sum, else if not possible (meaning we greater than k subgroups), we increase the sum to create smaller subgroups
+- minimum word abbrevation
+	- bitmasking, come back
