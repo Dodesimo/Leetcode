@@ -1,0 +1,23 @@
+- add strings
+	- very easy, same idea as add two numbers in terms of carry, string pointer of one, string pointer of the other
+	- while carry or pointers, extract the digit vlaue if the index is in bounds else 0
+	- and then do the add operation through modulo 10
+	- and then carry becomes // 10
+	- and then add to the result
+	- reverse result
+	- join as strig
+- partition equal subset sum:
+	- dp 
+	- see if total sum is even if not can't do anything
+	- if so, pick/unpick strategy
+		- remember edge case
+- pacific atlantic water flow:
+	- we do a dfs from the top row and the left column (these are pacific ocean)
+	- we only go to a cell if its greater than the previous cell (since that implies the other direction is going to the other ocean)
+	- then we do the same for atlantic ocean and then we get the intersection of the sets
+- sentence screen fitting:
+	- simulation: maintain a cursor that tracks the number of characters we have fit so far so thus the next available character
+	- create string that is space seperated
+	- iterate through rows, greedily pack as much as possible by moving cursor by columns
+	- if columns is space we are good (fit the next on the next line)
+	- if we have a word trace backwards. if we are at the end of the string add one to count because that's the next new character we can fit in the next row
