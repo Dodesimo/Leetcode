@@ -38,3 +38,4 @@
 			- join and this this is the target prefix
 			- look up candidates in the prefix based on this
 			- and then for each, append to matrix, dfs, and then pop from matrix
+		- can't use a single index and then go through because we can reuse words again and any arbitrary word can be used in terms of the prefix
