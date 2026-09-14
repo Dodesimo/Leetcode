@@ -1,0 +1,40 @@
+- valid word square:
+	- each row and col need to be of equal length, just do this check first
+	- can do this through a column length defaultdict
+	- but can have just a in bounds check
+		- just ensure that the row, column exchange is within bounds
+	- iterate through rows and columns and see that when we flip, does the c become a valid row and then the r be a valid index in the row
+- reconstruct original digits in english:
+	- character frequency, then iterate through all word frequencies for 0 through 9, keep subtracting till no valid characters and then add to a results string
+	- the greedy idea is that we want to process words that have the unique digits first
+		- zero: has z (unique)
+		- two: has w (unique)
+		- four: has u (unique)
+		- six: has x (unique)
+		- eight: has g (unique)
+	- from here, look at what else is unique
+		- we know that three: has h (unique)
+		- we know that five: has f (unique)
+		- seven: has s (unique)
+		- then what else is unique?
+		- nine: has i unique
+		- one: has n unique 
+		- so go from one, two, three uniques
+- longest repeating character replacement:
+	- if we can perform k times, the max frequency of our string can be greater than equal to length of substring - k
+	- so we process by maintaing a max frequency and hashmap of frequencies
+	- add right character and update max frequency
+	- and then contract while the maxFrequency is less than the size - k (because that means there are more than k replacements we have to do
+	- and then update the max length
+	- and increment r pointer
+- word squares:
+	- instead of blindly including each string and then validating it and then moving based on that, intelligently add words because on the prefix so far
+	- maintain a prefix trie that tracks the number of words that have the prefix
+		- standard trie don't over complicate, it just add char as necessary
+	- then in our backtracking:
+		- if the length of our matrix is the same as the length fo the first word, we have a square matrix by construction
+		- and then we calculate the prefix by noting that the length of the matrix is the index of the column we care about (if one item already, we care about the first column of the first row to know what words to care about)
+			- so we iterate through all words in the matrix, access that column (since its the next) and append to a list
+			- join and this this is the target prefix
+			- look up candidates in the prefix based on this
+			- and then for each, append to matrix, dfs, and then pop from matrix
