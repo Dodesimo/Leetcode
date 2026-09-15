@@ -1,0 +1,13 @@
+- path sum iii:
+	- prefix sum idea
+		- idea is that if you maintain a running sum and want to make a target k, you can make k the number of times you've seen runningSum - k.
+		- before current sum suppose u had an old sum
+		- if we want to get to target sum, target sum = current sum - old sum
+		- to find this old sum, current sum - target sum
+	- what we do is say that 0 has one instance of existing in a dictionary
+	- dfs with the node, if not node we return 0
+	- then we see how many paths sum to the target at this current node (adding to the path), as a variable
+	- then we add the current prefix to the mapping
+	- recurse left and right
+	- undo the mapping (in order to backtrack since we can't go across left and right child)
+	- return the value
