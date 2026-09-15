@@ -11,3 +11,6 @@
 	- recurse left and right
 	- undo the mapping (in order to backtrack since we can't go across left and right child)
 	- return the value
+- find all anagrams in string:
+	- simple sliding window that's static
+	- roll over logic 
