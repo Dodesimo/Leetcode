@@ -14,3 +14,18 @@
 - find all anagrams in string:
 	- simple sliding window that's static
 	- roll over logic 
+- ternary expression parser:
+	- can just reverse iterate, put values in stack, when we hit a "?", take the values if its a true take the first value else the false and then add it back to the stack, and then move backwards by two
+	- if there's a ":", do nothing
+	- if its a normal value then add it to the stack
+- kth smallest in lexographical order:
+	- idea: keep skipping numbers till the next digit since numbers before appear in dictionary format based no prefix
+	- include 1 and subtract k by zero since you're including it
+	- while k > 0, calculate the number of skips from current to current + 1
+		- do this by iteratively add to steps the difference betwen current and current + one, and then multiplying by ten each while first is less than equal n
+			- we are limiting by n, so when subtracting from second, minimum of second and n + 1 (since n is inclusive in our range)
+		- this because every single number w/ prefix current and whatever multplier appears before prefix + 1
+		- return steps
+	- if our steps is <= k, we subtract and we increment our k (smaller number is bigger steps)
+	- but if its greater, just decrement k and multiply our current by ten to move down the tree
+	- return current after
