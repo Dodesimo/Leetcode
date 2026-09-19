@@ -1,0 +1,44 @@
+- non-overlapping interval:
+	- we process intervals and if there's an overlap, we greedily want to consider the interval that ends earlier so that we can fit more intervals
+	- that means we sort, and then process intervals sequential after setting the minimum end to the end of the first interval
+	- then process start, end if there's overlap, make the minimum end the minimum of two ends
+	- else we move the minimum end to the end of the current interval
+- find the right interval:
+	- don't use monostack because monostack is used for finding most recent unresolved thing, but stack doesn't work here because we want to access all possible indices before
+	- to find the first interval that's greater than the start, maintain original indices, sort by starts, and for each interval, we find the first start geq its end through a binary search
+		- pretty straightforward binary search logic:
+			- if the start is less than the end, we move right
+			- else we move left
+		- return the result
+
+- arranging coins:
+	- could literally simulate the process but too much
+	- know that the sum of the first k numbers is (k * (k + 1))/2
+	- you can binary search this range to find the first number les than or equal to in order to solve the problem
+	- standard binary search, define a helper sum function, then l = 0, r = n, find the mid point, calculate the sum, if its less than store it but try something greater (go to the right), else go to the left
+
+- sequence reconstruction:
+	- so the question becomes a matter of with sequences, can u have a unique construction of nums in that order (which is what sequence implies)
+	- how do we check uniqueness?
+	- if we have a situation where numerous nodes have a indegree of 0, that means not uniqueness since any one of them can be popped and then processed 
+	- so populate a queue with everything that doesn't have indegree
+	- and then pop from queue, reduce indegree of that node's neighbors
+	- if the neighbor's indegree goes 0, add them to the queue
+	- if the queue length ever becomes greater than 1, return false
+	- then we compare whether the result is equal to the nums
+	- and then while this we need to see whether the range of sequences is equal to the range of 1 to n (done by tracking minimum and maximum and seeing if there's exactly N items added to the visited set)
+	- so the ultimate move in this question is realizing that the goal is to use the sequences array to reconstruct nums IN ORDER. 
+		- doing this requires a topological ordering of the sequences, and then realizing the uniqueness enforcement requires tracking how many 0 indegree nodes you have at a point (because multiple implies you can use either one in the topological ordering)
+	- steps:
+		- create adj list dictionary, in order dictionary
+		- then process each seq, go through all items in seq, track minimum and maximum
+		- and then iterate through two elems at a time, and then add second element to the adjacency list and increase inorder value
+			- only if the second elem hasn't been seen in the adjacency list
+		- then do above checks
+		- then, add to a queue all items from i to n that isn't in the in order dictionary
+		- then do the queue algorithm:
+			- check if more than one w/ 0 inorder degree, return false
+			- and then pop node, add to a result
+			- and then go through all neighbors subtract inorder value
+			- if it becomes 0, add to the queue
+		- after while loop, compare the result to the original nums 
