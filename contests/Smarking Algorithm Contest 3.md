@@ -41,3 +41,5 @@
 	* else, increment count, and then update the end, keep advancing
 	* then at the end, to account for the last balloon group, we increment the count
 	* return count
+* artihmetic slices II:
+	* hard dp checkout when time
