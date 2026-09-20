@@ -1,0 +1,9 @@
+- assign cookies:
+	- if you sort, you've processed all cookies and people before the current pointer
+	- so sort both, have a cookie pointer and person pointer
+	- while both pointers are in bounds, we see if the greed of the person is less than equal to the cookie size. if so we can match this
+		- so we increment the count
+		- and adjust both pointers
+	- if not, we need a bigger cookie size, so we increment the cookie pointer
+	- return the count at the end
+- 
