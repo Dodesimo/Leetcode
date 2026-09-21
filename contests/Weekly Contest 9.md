@@ -21,7 +21,7 @@
 		- one: has n unique 
 		- so go from one, two, three uniques
 - longest repeating character replacement:
-	- if we can perform k times, the max frequency of our string can be greater than equal to length of substring - k
+			- if we can perform k times, the max frequency of our string can be greater than equal to length of  xsubstring - k
 	- so we process by maintaing a max frequency and hashmap of frequencies
 	- add right character and update max frequency
 	- and then contract while the maxFrequency is less than the size - k (because that means there are more than k replacements we have to do

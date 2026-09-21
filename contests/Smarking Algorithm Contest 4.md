@@ -6,4 +6,17 @@
 		- and adjust both pointers
 	- if not, we need a bigger cookie size, so we increment the cookie pointer
 	- return the count at the end
-- 
+- repeated substring pattern:
+	- brute force, just literally create substrings and see if its equal to the larger string
+	- better:
+		- use KMP longest prefix that matches suffix.
+		- idea is that with the longest prefix that is also the suffix, by subtracting this length by the length of the string, you get the start of a repeating pattern since these are the number of characters that appear before the suffix
+		- to create LPS, maintain array of size string, length of 0, index of 1
+		- iterate through, if the current character matches character at length, our length increases, index increases, and we can store the LPS index as length
+		- else, if we have a length of greater than zero, see if this matches a prefix previously by setting length to `lps[length - 1]`
+		- else, we know the length is 0 and there's no match, so set the LPS value to 0
+		- increase index
+		- from here we know the the LPS for the whole string is the last element of this LPS index
+		- to get the length of the candidate, subtract the length of the suffix from the whole string, and then see if the string length is divisible by this value
+			- this is because the subtraction is telling us the suffix shows up that many items after the start, and the suffix is the same as the prefix
+			- so the subtraction is the unit of repetition
