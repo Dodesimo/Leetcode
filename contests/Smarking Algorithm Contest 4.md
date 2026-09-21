@@ -20,3 +20,25 @@
 		- to get the length of the candidate, subtract the length of the suffix from the whole string, and then see if the string length is divisible by this value
 			- this is because the subtraction is telling us the suffix shows up that many items after the start, and the suffix is the same as the prefix
 			- so the subtraction is the unit of repetition
+- 4sum II
+	- don't try to force this into the 4 sum or three sum pattern because you don't need to actually track the result pairs, just count hte number of outputs
+	- the equation is `n1 + n2 + n3 + n4 = 0
+		- split into `n1 + n2 = -(n3 + n4)`
+	- so what this tells us is we enumerate the different sums of n1 and n2
+	- and then we iterate through the third and fourth arrays and then see if there's the negative version of the sum of that present within the hashmap
+		- because that would mean the sums of n1 n2 n3 and n4 cancel out and equal 0
+		- we then add that many instances of the positive sum to our count
+	- this is different because you don't have to track the actual output result but rather the number of times the solution is formed
+	- n1 + n2 + n3 + n4 is equal to 0
+	- (n1 + n2) = -(n3 + n4)
+	- so just enumerate the sums for n1 + n2, and then go through sums of n3 and n4
+	- then in our hashmap, if we have seen that the opposite sign sum for n1 and n2 when going through n3 and n4, we just add that many to our count
+- 132 pattern:
+	- very hard instance of monostack
+	- for every number we want a greater number and minimum number that appeared before it
+	- for the greater number, we can maintain a strictly decreasing mono stack because we keep popping less than equal to and top of stack has the greatest element
+	- we then have this greatest element and corresponding minimum and we see whether our element is greater than the minimum if so yes we have a 132 pattern
+	- then we update the minimum w this element
+	- and add it to the stack
+	- at the end we return false if true wasn't returned
+	- important for less than equal to so that we are STRICTLY decreasing
