@@ -1,0 +1,17 @@
+- island perimeter:
+	- iterate through all ones, if the top, bottom, left, right is out of bounds or if it equals one, increment count
+	- return count
+- can i win:
+	- weird dp
+	- visited set maintains choice
+	- if the remaining total is negative, return False since the person before us won
+	- then iterate through all numbers in range of maximum
+		- if not in visited set, add to visited set, recurse with whatever is left
+		- if that returns a false that means that teh next person lost so we won return true
+	- at end return false
+	- memo: maintain a sorted list of the visited items that can be used as keys for and the remaining amount
+- minimum moves to equal array elements II
+	- so this is pretty obvious, make everything equal to the median since that esures all items equal distances away have the smallest (since it minimizes the sum of absolute differences)
+	- its a tipping point, move it to far one direction other numbers are super unbalanced
+	- so find median (if odd mid point, if not, // 2 and then subtract one from that index, average that)
+	- then iterate through numbers, calculate absolute difference and then return that
