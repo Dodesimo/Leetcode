@@ -1,0 +1,14 @@
+- number of segments in a string:
+	- split based on spaces
+	- if we have all space items, that is 0 because its a contiguous block of space
+	- else the number of segments would be the number of segments -  number of spaces 
+	- so after split, we go through and track this
+		- go through all splits, if not space mark flag as false
+		- else if space increment number of space items
+	- if we saw all spaces, return 0
+	- else total number of split items minus the space items
+	- or more simpler:
+		- every time we see a space earlier and we had a character we increment the count
+		- edge case: all spaces is 0
+		- so if the first character is not a space we increment as well so that we maintain a original initial segment
+			- with all spaces this correctly returns 0
