@@ -15,3 +15,5 @@
 	- its a tipping point, move it to far one direction other numbers are super unbalanced
 	- so find median (if odd mid point, if not, // 2 and then subtract one from that index, average that)
 	- then iterate through numbers, calculate absolute difference and then return that
+- optimal account balance:
+	- review

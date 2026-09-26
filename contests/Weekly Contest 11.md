@@ -12,3 +12,15 @@
 		- edge case: all spaces is 0
 		- so if the first character is not a space we increment as well so that we maintain a original initial segment
 			- with all spaces this correctly returns 0
+- convex polygon:
+	- optimal solution: we go through three points at a time and see if they are all going in the same direction, we have the last point be added to the points again to maintain it as an enclosed structure
+		- the sign of the cross product of two dimensional vectors tells us what direction the second vector is with respect to the first
+		- so we calculate the cross product of all vectors of three points at a time
+		- for two points (a, b) and (c, d) the cross product is ad - bc 
+		- we care about the magnitude of this
+	- in order to have a full three point check, we need the last point to have the first two points available
+	- so what we do is iterate through all points, get the current, next, and second points through modulo operation
+	- and then calculate the two vectors
+	- calculate the z-component scalar (given vectors (a, b) and (c, d), the its ad - bc)
+	- then we check whether this sign is the same as what's previous (or set it as the previous one)
+	- if not return false else true
