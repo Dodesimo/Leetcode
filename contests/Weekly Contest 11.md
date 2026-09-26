@@ -14,6 +14,7 @@
 			- with all spaces this correctly returns 0
 - convex polygon:
 	- optimal solution: we go through three points at a time and see if they are all going in the same direction, we have the last point be added to the points again to maintain it as an enclosed structure
+		- for a concave polygon, 
 		- the sign of the cross product of two dimensional vectors tells us what direction the second vector is with respect to the first
 		- so we calculate the cross product of all vectors of three points at a time
 		- for two points (a, b) and (c, d) the cross product is ad - bc 
@@ -24,3 +25,22 @@
 	- calculate the z-component scalar (given vectors (a, b) and (c, d), the its ad - bc)
 	- then we check whether this sign is the same as what's previous (or set it as the previous one)
 	- if not return false else true
+- unique substrings in wrap around word:
+	- dynamic programming approach:
+		- only extend if previous character was right before it in the order (this is the length)
+		- else, the length becomes 1
+	- the length we have corresponds to the number of unique substrings 
+	- how do we avoid repeats?
+		- map the length of the longest substring to the ending character
+		- after checking the length of the longest substring at this character, we see if this is less than the previously recorded one
+			- if so, this doesn't doesn't add new information (repeats)
+			- else, we add the difference to our count
+	- so we maintain ordering string
+	- largestStringEnding map: mapping string character to largest substring
+	- start with the first character: add to map, make length 1, make count 1
+	- then iterate through all other character
+		- get previous
+		- see if previous is before in the ordering by subtracting ascii value of current to index in, go one index before and check 
+		- if so, increment length since the longest substring at this particular index is a result of extending the one previously
+	- now, if this longest substring ending at this character is greater than what we have previously see for this character, there's a few more substrings we found so lets add them (the difference), and reset the longest substring
+- 
