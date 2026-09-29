@@ -43,4 +43,14 @@
 		- see if previous is before in the ordering by subtracting ascii value of current to index in, go one index before and check 
 		- if so, increment length since the longest substring at this particular index is a result of extending the one previously
 	- now, if this longest substring ending at this character is greater than what we have previously see for this character, there's a few more substrings we found so lets add them (the difference), and reset the longest substring
+- count the repetitions
+	- essentially need to see how many times s2 shows up in the full version of s1
+	- forming s1 as a whole is not that efficient
+	- so what we do is detect cycles based on the string 2 pointer
+	- we track the number of times we have consumed s1 and s2 when we see a s2 index again
+	- from there, we get the last first count and second count when we saw this
+	- then we calculate the length of the first cycle and second length
+	- then we see how much we have left (looking at remaining and dividing it by the length of the first cycle) and then calculate the remaining cycles for the first and then the same for the second 
+	- keep doing this till we use up all of n1
+	- since we have found s2 a certain number of times and we need to see how many times we can form (s2 * n), divide the number of times by n2 
 - 
