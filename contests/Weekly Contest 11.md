@@ -53,4 +53,3 @@
 	- then we see how much we have left (looking at remaining and dividing it by the length of the first cycle) and then calculate the remaining cycles for the first and then the same for the second 
 	- keep doing this till we use up all of n1
 	- since we have found s2 a certain number of times and we need to see how many times we can form (s2 * n), divide the number of times by n2 
-- 

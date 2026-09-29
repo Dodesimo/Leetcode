@@ -1,1 +1,10 @@
-- 
+- heaters:
+	-  so we have a range of radiuses if possible
+	- we don't know whether these are sorted or not so lets sort 
+	- starting at 0 and the largest possible radius (smallest house to largest heater, smallest heater to largest house)
+	- we go through the houses and heaters array
+	- if the house lies in the absolute value of the range of radius added minus to the heater position, we advance houses
+	- else we advance heaters
+	- if we use up all houses we return true else return false
+	- we want the first radius, so if we can heat, store then push left else increase
+	- return the result at the end
